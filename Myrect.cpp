@@ -22,37 +22,33 @@ void Myrect:: keyPressEvent(QKeyEvent *event)
             setPos(x(),y()+10);
 
         }
-    else if (event->key()==Qt::Key_Space){
+    else if (event->key()==Qt::Key_Space ){
 
-        // le player tire
-        //creation du thread porjectile
-        projetile *bullet = new projetile(this);
-        scene()->addItem(bullet);
+
+        projetile *bullet = new projetile(this,&poseSouris);
+         scene()->addItem(bullet);
 
     }
+
+
+
+
 }
 
 Myrect::Myrect(QGraphicsScene *Scene)
 {
     setRect(0,0,100,100);
     setPos(x()+500,y()+400);
+
     connect(Scene,SIGNAL(mousepose(QPointF *)),this,SLOT(rotation(QPointF *)));
 
 
+
 }
+void Myrect::rotation(QPointF*pos){
 
-void Myrect::rotation(QPointF *pos)
-{
+   poseSouris = *pos ;
 
-    QPointF A =  QPointF(x(),y());
-    QPointF B =  QPointF(x()+100,y());
-
-    qreal AB = qSqrt(qPow((B.x()-A.x()),2)+qPow((B.y()-A.y()),2)) ;
-    qreal BS = qSqrt(qPow(-B.x()+pos->x(),2)+qPow(-B.y()+pos->y(),2));
-    qreal AS = qSqrt(qPow(-A.x()+pos->x(),2)+qPow(-A.y()+pos->y(),2));
-
-    qreal angle =qAcos((-qPow(BS,2)+qPow(AB,2)+qPow(AS,2))/(2*AB*AS));
-    setRotation(qRadiansToDegrees(angle));
 
 
 }

@@ -7,6 +7,7 @@
 #include <QtMath>
 #include <QObject>
 #include <QGraphicsScene>
+#include <QPointF>
 class Myrect : public QObject ,public QGraphicsRectItem  {
 Q_OBJECT
 public:
@@ -14,6 +15,8 @@ public:
     Myrect(QGraphicsScene *Scene);
 private :
     QGraphicsScene *Scene;
+    QPointF  poseSouris ;
+
 private slots :
     void rotation(QPointF *pos);
 };
