@@ -3,12 +3,12 @@
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include <Myrect.h>
+#include <Player.h>
 #include <mouscontroller.h>
 #include "scenemoussed.h"
 #include <QPushButton>
-
-
+#include <wall.h>
+#include <wall_face.h>
 
 int main(int argc, char *argv[])
 {
@@ -20,9 +20,15 @@ int main(int argc, char *argv[])
     scenemoussed *scene = new scenemoussed;
 
     // rectangle pour commencer
-    Myrect * rect = new Myrect(scene);
-
+   Player * rect = new Player(scene);
+    Wall *wall1 =new Wall();
+    Wall *wall_face =new Wall_face();
     scene->addItem(rect);
+    scene ->addItem(wall1);
+    scene->addItem(wall_face);
+    wall1->setOffset(400,200);
+    wall_face->setOffset(450,200);
+
 
 
     //activation de la souris

@@ -2,17 +2,18 @@
 #define MYRECT_H
 
 
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QtMath>
 #include <QObject>
 #include <QGraphicsScene>
 #include <QPointF>
-class Myrect : public QObject ,public QGraphicsRectItem  {
+class Player : public QObject ,public QGraphicsPixmapItem  {
 Q_OBJECT
 public:
     void  keyPressEvent(QKeyEvent *event);
-    Myrect(QGraphicsScene *Scene);
+    //void keyReleaseEvent(QKeyEvent *event);
+    Player(QGraphicsScene *Scene);
 private :
     QGraphicsScene *Scene;
     QPointF  poseSouris ;

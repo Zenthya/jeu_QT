@@ -2,26 +2,29 @@
 #include <QDebug>
 #include <QVector2D>
 #include <QtMath>
+#include <wall_face.h>
+#include <QGraphicsScene>
 
-
-
-projetile::projetile(QGraphicsRectItem *Rect,QPointF * Souris)
+projetile::projetile(QGraphicsPixmapItem *Rect,QPointF * Souris)
 {
-    setRect(Rect->x(),Rect->y(),10,50);
+    setOffset(Rect->offset().x()+2,Rect->offset().y()+17);
     // calcul des mouvement a effectuer pour le projectile
     qreal vitesse = 10 ;
 
-    qreal S =(Rect->x()-Souris->x()) ;
-    qreal P =(Rect->y()-Souris->y()) ;
+    qreal S =(Rect->offset().x()-Souris->x()) ;
+    qreal P =(Rect->offset().y()-Souris->y()) ;
     qreal normeSP =qSqrt((S*S)+(P*P));
 
      YPos = (P/normeSP)*vitesse;
      XPos = (S/normeSP)*vitesse;
 
       qreal angle = qRadiansToDegrees(qAtan2(P,S)) -90;
-   setRotation(angle);
-   setTransformOriginPoint(Rect->x(),Rect->y());
+    setRotation(angle);
+    setTransformOriginPoint(Rect->offset().x()+2,Rect->offset().y()+17);
 
+
+    //
+    setPixmap(QPixmap(":image/arrow.png"));
 
     //demarrage du thread
     connect(this,SIGNAL(timer()),this,SLOT(move()));
@@ -37,15 +40,30 @@ projetile::projetile(QGraphicsRectItem *Rect,QPointF * Souris)
 void projetile::run()
 {
 
-    int time = 0;
-    while(time < 400){
+
+    while(lifetime < 400){
         msleep(20);
         emit timer();
-        time+=10;
+        lifetime+=10;
     }
 
 }
  void projetile::move(){
+     //test collision
+     QList<QGraphicsItem *> CollindingItem = collidingItems();
+
+     for(int i  = 0 ; i <CollindingItem.length(); ++i ){
+
+         if(typeid(*CollindingItem[i]) == typeid(Wall_face)){
+            scene()->removeItem(this);
+            lifetime =400;
+            return;
+         }
+
+
+     }
+
+
     setPos(x()-XPos,y()-YPos);
 }
 

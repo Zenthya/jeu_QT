@@ -5,7 +5,7 @@
 #include <QGraphicsRectItem>
 
 
-class projetile : public QThread , public QGraphicsRectItem
+class projetile : public QThread , public QGraphicsPixmapItem
 {
 
     Q_OBJECT
@@ -15,11 +15,12 @@ signals :
     void timer ();
 
 public:
-    projetile(QGraphicsRectItem *Rect,QPointF* poseSouris );
+    projetile(QGraphicsPixmapItem *Rect,QPointF* poseSouris );
     void run();
 private :
     qreal YPos = 10;
     qreal XPos = -10;
+    int lifetime = 0;
 
 public slots :
      void move();

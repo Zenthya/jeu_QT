@@ -13,6 +13,7 @@
 
  setMouseTracking(true);
  setFixedSize(1080,720);
+
  setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
  setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
