@@ -16,19 +16,35 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Myrect.cpp \
+    Player.cpp \
+    afficheur.cpp \
+    controller.cpp \
+    entity.cpp \
+    floor.cpp \
     main.cpp \
+    modele.cpp \
     mouscontroller.cpp \
     projetile.cpp \
     scenemoussed.cpp \
-    startwindow.cpp
+    startwindow.cpp \
+    wall.cpp \
+    wall_face.cpp \
+    weapon.cpp
 
 HEADERS += \
-    Myrect.h \
+    Player.h \
+    afficheur.h \
+    controller.h \
+    entity.h \
+    floor.h \
+    modele.h \
     mouscontroller.h \
     projetile.h \
     scenemoussed.h \
-    startwindow.h
+    startwindow.h \
+    wall.h \
+    wall_face.h \
+    weapon.h
 
 FORMS +=
 
@@ -39,3 +55,6 @@ TRANSLATIONS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    ressource.qrc

@@ -2,7 +2,8 @@
 #include <QDebug>
 scenemoussed::scenemoussed(QObject *parent): QGraphicsScene(parent)
 {
-    setSceneRect(0,0,1080,800);
+    setSceneRect(0,0,10800,7200);
+    setStickyFocus(true);
 }
 
 void scenemoussed::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -13,4 +14,11 @@ void scenemoussed::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
     emit mousepose(&mouse);
 
+}
+
+
+void scenemoussed::mousePressEvent(QGraphicsSceneMouseEvent *event){
+
+
+    emit mousepressed();
 }

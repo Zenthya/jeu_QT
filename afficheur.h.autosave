@@ -1,0 +1,16 @@
+#ifndef AFFICHEUR_H
+#define AFFICHEUR_H
+#include<controller.h>
+#include<modele.h>
+
+class Afficheur
+{
+public:
+    Afficheur();
+    
+private :
+    Controller  controlleur ;
+    Modele modele;
+};
+
+#endif // AFFICHEUR_H

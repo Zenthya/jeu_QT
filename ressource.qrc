@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>arrow.png</file>
+        <file>player.png</file>
+        <file>floore_wall_right.png</file>
+        <file>floore_wall_left.png</file>
+        <file>floore_without_wall.png</file>
+        <file>wall_middle.png</file>
+        <file>wall_corner-left.png</file>
+        <file>wall_double-corner.png</file>
+        <file>wall_corner-right.png</file>
+    </qresource>
+</RCC>
