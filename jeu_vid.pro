@@ -17,22 +17,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Player.cpp \
+    entity.cpp \
+    floor.cpp \
     main.cpp \
     mouscontroller.cpp \
     projetile.cpp \
     scenemoussed.cpp \
     startwindow.cpp \
     wall.cpp \
-    wall_face.cpp
+    wall_face.cpp \
+    weapon.cpp
 
 HEADERS += \
     Player.h \
+    entity.h \
+    floor.h \
     mouscontroller.h \
     projetile.h \
     scenemoussed.h \
     startwindow.h \
     wall.h \
-    wall_face.h
+    wall_face.h \
+    weapon.h
 
 FORMS +=
 

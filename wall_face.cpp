@@ -2,6 +2,6 @@
 
 Wall_face::Wall_face()
 {
-        setPixmap(QPixmap(":/image/Wall_face.png"));
+        setPixmap(QPixmap(":/image/wall_middle.png"));
 
 }

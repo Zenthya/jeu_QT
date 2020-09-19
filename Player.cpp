@@ -8,50 +8,52 @@
 
 void Player:: keyPressEvent(QKeyEvent *event)
 {
+
+
     if(event->key() == Qt::Key_Left){
 
-        setOffset(offset().x()-10,offset().y());
-
+        setPos(x()-10,y());
     }
      if(event->key()== Qt::Key_Right){
-        setOffset(offset().x()+10,offset().y());
+        setPos(x()+10,y());
     }
      if(event->key()== Qt::Key_Up){
-            setOffset(offset().x(),offset().y()-10);
+
+            setPos(x(),y()-10);
+
+            QPointF phantome = QPointF(x(),y()+32);
+            Entity   * pipi =new Entity(&phantome);
+            scene()->addItem(pipi);
+            qDebug()<<pipi->CollisionDetector();
+
         }
      if (event->key()== Qt::Key_Down){
-            setOffset(offset().x(),offset().y()+10);
+            setPos(x(),y()+10);
 
         }
-     if (event->key()==Qt::Key_Space ){
 
-
-        projetile *bullet = new projetile(this,&poseSouris);
-         scene()->addItem(bullet);
-
-
-    }
 
 
 
 
 }
 
-Player::Player(QGraphicsScene *Scene)
+Player::Player(QGraphicsScene * Scene)
 {
 
-    setOffset(500,400);
+    setPos(400,300);
     setPixmap(QPixmap(":image/player.png"));
     setZValue(1);
-    connect(Scene,SIGNAL(mousepose(QPointF *)),this,SLOT(rotation(QPointF *)));
+    connect(Scene,SIGNAL(mousepressed()),this,SLOT(sourispressed()));
+
+
 
 
 
 }
-void Player::rotation(QPointF*pos){
-
-   poseSouris = *pos ;
 
 
+void Player::sourispressed(){
+    Weapon->fire(this);
 
 }

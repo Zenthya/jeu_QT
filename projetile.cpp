@@ -7,12 +7,12 @@
 
 projetile::projetile(QGraphicsPixmapItem *Rect,QPointF * Souris)
 {
-    setOffset(Rect->offset().x()+2,Rect->offset().y()+17);
+    setOffset(Rect->x()+2,Rect->y()+17);
     // calcul des mouvement a effectuer pour le projectile
     qreal vitesse = 10 ;
 
-    qreal S =(Rect->offset().x()-Souris->x()) ;
-    qreal P =(Rect->offset().y()-Souris->y()) ;
+    qreal S =(Rect->x()-Souris->x()) ;
+    qreal P =(Rect->y()-Souris->y()) ;
     qreal normeSP =qSqrt((S*S)+(P*P));
 
      YPos = (P/normeSP)*vitesse;
@@ -20,11 +20,13 @@ projetile::projetile(QGraphicsPixmapItem *Rect,QPointF * Souris)
 
       qreal angle = qRadiansToDegrees(qAtan2(P,S)) -90;
     setRotation(angle);
-    setTransformOriginPoint(Rect->offset().x()+2,Rect->offset().y()+17);
+    setTransformOriginPoint(Rect->x()+2,Rect->y()+17);
 
 
     //
     setPixmap(QPixmap(":image/arrow.png"));
+
+
 
     //demarrage du thread
     connect(this,SIGNAL(timer()),this,SLOT(move()));

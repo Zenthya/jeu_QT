@@ -15,7 +15,7 @@ signals :
     void timer ();
 
 public:
-    projetile(QGraphicsPixmapItem *Rect,QPointF* poseSouris );
+    projetile(QGraphicsPixmapItem *Rect,QPointF * Souris);
     void run();
 private :
     qreal YPos = 10;
@@ -24,6 +24,7 @@ private :
 
 public slots :
      void move();
+
 };
 
 #endif // PROJETILE_H
