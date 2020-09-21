@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     afficheur.cpp \
+    background.cpp \
     controller.cpp \
-    entity.cpp \
+    floore.cpp \
     graphic_element.cpp \
     main.cpp \
+    map.cpp \
     modele.cpp \
     player.cpp \
     projetile.cpp \
@@ -30,9 +32,11 @@ SOURCES += \
 
 HEADERS += \
     afficheur.h \
+    background.h \
     controller.h \
-    entity.h \
+    floore.h \
     graphic_element.h \
+    map.h \
     modele.h \
     player.h \
     projetile.h \

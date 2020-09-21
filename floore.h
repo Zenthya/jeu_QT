@@ -1,14 +1,15 @@
-#ifndef WALL_H
-#define WALL_H
+#ifndef FLOORE_H
+#define FLOORE_H
 
 
 #include<QPixmap>
 #include<graphic_element.h>
 
 
-class Wall : public Graphic_element   {
+class Floore : public Graphic_element   {
     public:
     QPixmap Drawing;
-    Wall(QPointF *, int typeOfWall);
+    Floore(QPointF *);
     };
 #endif // WALL_H
+

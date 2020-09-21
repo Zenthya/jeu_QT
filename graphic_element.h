@@ -18,6 +18,7 @@ public:
 private :
     QPointF* Coordonnee;
     QPixmap*  Drawing;
+
 };
 
 #endif // GRAPHIC_ELEMENT_H

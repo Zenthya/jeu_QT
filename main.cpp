@@ -9,7 +9,7 @@
 #include <QPushButton>
 #include <wall.h>
 #include <wall_face.h>
-#include <floor.h>
+#include <floore.h>
 #include <QObject>
 #include<afficheur.h>
 #include<controller.h>

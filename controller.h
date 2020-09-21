@@ -13,6 +13,7 @@ public:
     void setModel(Modele *);
     Modele * getModele();
 
+
 private :
 
     Modele * modele ;
