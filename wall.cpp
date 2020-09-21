@@ -1,9 +1,9 @@
 #include "wall.h"
 #include <QGraphicsScene>
-Wall::Wall()
+Wall::Wall(QPointF * point):Graphic_element(point)
 {
 
-    setPixmap(QPixmap(":/image/Wall_face.png"));
+  setDrawing( new QPixmap(":image/wall_middle.png"));
 
 
 

@@ -14,6 +14,8 @@ public:
     scenemoussed(QObject*parent =0);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) ;
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
+protected:
+      void drawBackground(QPainter * ,const QRectF &);
 };
 
 #endif // SCENEMOUSSED_H

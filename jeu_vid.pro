@@ -16,34 +16,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Player.cpp \
     afficheur.cpp \
     controller.cpp \
     entity.cpp \
-    floor.cpp \
+    graphic_element.cpp \
     main.cpp \
     modele.cpp \
-    mouscontroller.cpp \
+    player.cpp \
     projetile.cpp \
     scenemoussed.cpp \
-    startwindow.cpp \
     wall.cpp \
-    wall_face.cpp \
     weapon.cpp
 
 HEADERS += \
-    Player.h \
     afficheur.h \
     controller.h \
     entity.h \
-    floor.h \
+    graphic_element.h \
     modele.h \
-    mouscontroller.h \
+    player.h \
     projetile.h \
     scenemoussed.h \
-    startwindow.h \
     wall.h \
-    wall_face.h \
     weapon.h
 
 FORMS +=

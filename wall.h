@@ -1,14 +1,18 @@
 #ifndef WALL_H
 #define WALL_H
 
-#include <QGraphicsPixmapItem>
+
 #include<QPixmap>
+#include<graphic_element.h>
 
 
-class Wall: public QObject ,public QGraphicsPixmapItem  {
-    Q_OBJECT
+class Wall : public Graphic_element   {
+
     public:
-    Wall();
+    QPixmap Drawing;
+    Wall(QPointF *);
+
+
 
 
 

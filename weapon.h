@@ -6,29 +6,27 @@
 #include<projetile.h>
 
 
-class  Weapon : public QObject
+class  Weapon
 {
 
-    Q_OBJECT
+
 
 public:
-    Weapon(QGraphicsScene *Scene);
-    QPointF sourispose ;
-    QGraphicsScene *Scene;
-    virtual void fire(QGraphicsPixmapItem* );
+    Weapon();
+    int dmg ;
 
-public slots :
-     void  souris(QPointF *);
+
+
 
 };
 
 
 
 class Bow : public Weapon {
-     Q_OBJECT
+
 public :
-    Bow(QGraphicsScene *Scene);
-    void fire(QGraphicsPixmapItem *);
+    Bow(int dmg);
+
 
 };
 

@@ -1,40 +1,23 @@
-#ifndef MYRECT_H
-#define MYRECT_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
+#include "graphic_element.h"
+#include "weapon.h"
 
-
-#include <QKeyEvent>
-#include <QtMath>
-
-#include <QGraphicsScene>
-#include <QPointF>
-#include<entity.h>
-#include<weapon.h>
-
-
-class Player :  public Entity{
-Q_OBJECT
-
-
+class Player : public Graphic_element
+{
 public:
-    void  keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
-    Weapon * Weapon  ;
+    Player(QPointF *);
 
-    Player(QGraphicsScene *Scene);
+    int getLife();
+    void setLife(int value);
+
+    int getAmmo();
+    void setAmmo(int value);
+
 private :
-    int Key[4];
-    QPointF  poseSouris ;
-
-
-public slots :
-    void sourispressed();
-    void move();
-
+    int life ;
+    int ammo;
 };
 
-
-
-
-
-#endif // MYRECT_H
+#endif // PLAYER_H
