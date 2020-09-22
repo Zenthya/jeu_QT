@@ -9,15 +9,15 @@ Graphic_element::Graphic_element(QPointF * pose)
 QPointF & Graphic_element::getCoordonnee()
 {
     QMutexLocker locker(&mutex);
-    return  *Coordonnee;
+    return   * Coordonnee;
 }
 
-void Graphic_element::setCoordonnee( QPointF *value)
+void Graphic_element::setCoordonnee( QPointF * value)
 {
     QMutexLocker locker(&mutex);
 
 
-    Coordonnee = value;
+    Coordonnee =  value;
 }
 
 
@@ -32,4 +32,7 @@ void Graphic_element::setDrawing( QPixmap *value)
 {
     QMutexLocker locker(&mutex);
     Drawing = value;
+}
+QString Graphic_element::type(){
+    return "Graphic_element";
 }

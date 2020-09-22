@@ -10,5 +10,6 @@ class Wall : public Graphic_element   {
     public:
     QPixmap Drawing;
     Wall(QPointF *, int typeOfWall);
+    QString type();
     };
 #endif // WALL_H

@@ -1,5 +1,5 @@
 #include "wall.h"
-#include <QGraphicsScene>
+
 Wall::Wall(QPointF *point, int typeOfWall):Graphic_element(point)
 {
     if(typeOfWall == 0){
@@ -11,4 +11,7 @@ Wall::Wall(QPointF *point, int typeOfWall):Graphic_element(point)
     } else if (typeOfWall == 3) {
         setDrawing(new QPixmap(":map/wall_double_corner.png"));
     }
+}
+QString Wall::type(){
+    return "Wall";
 }

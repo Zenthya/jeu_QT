@@ -18,12 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     afficheur.cpp \
     background.cpp \
-    controller.cpp \
+    conttrolleur.cpp \
     floore.cpp \
     graphic_element.cpp \
     main.cpp \
     map.cpp \
     modele.cpp \
+    modifiedscene.cpp \
     player.cpp \
     projetile.cpp \
     scenemoussed.cpp \
@@ -33,11 +34,12 @@ SOURCES += \
 HEADERS += \
     afficheur.h \
     background.h \
-    controller.h \
+    conttrolleur.h \
     floore.h \
     graphic_element.h \
     map.h \
     modele.h \
+    modifiedscene.h \
     player.h \
     projetile.h \
     scenemoussed.h \

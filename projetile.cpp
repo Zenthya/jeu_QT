@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QVector2D>
 #include <QtMath>
-#include <wall_face.h>
+#include <wall.h>
 #include <QGraphicsScene>
 
 projetile::projetile(QGraphicsPixmapItem *Rect,QPointF * Souris)
@@ -56,7 +56,7 @@ void projetile::run()
 
      for(int i  = 0 ; i <CollindingItem.length(); ++i ){
 
-         if(typeid(*CollindingItem[i]) == typeid(Wall_face)){
+         if(typeid(*CollindingItem[i]) == typeid(Wall)){
             scene()->removeItem(this);
             lifetime =400;
             return;

@@ -8,6 +8,7 @@ class Background : public Graphic_element   {
     public:
     QPixmap Drawing;
     Background(QPointF *, int typeOfBackground);
+    QString type();
     };
 
 #endif // BACKGROUND_H

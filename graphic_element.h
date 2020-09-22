@@ -13,7 +13,8 @@ public:
     void setCoordonnee( QPointF *value);
 
     QPixmap & getDrawing() ;
-    void setDrawing( QPixmap *value);
+    void setDrawing( QPixmap  *value);
+    virtual QString type();
 
 private :
     QPointF* Coordonnee;

@@ -6,10 +6,10 @@
 
 Modele::Modele()
 {
+    player = new Player(new QPointF( 450,450));
 
-    
 
-    wall_element.append(new Player(new QPointF(100,300)));
+
     Mapping(":map/map.json");
 }
 

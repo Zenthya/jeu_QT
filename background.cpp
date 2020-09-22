@@ -12,3 +12,8 @@ Background::Background(QPointF *point, int typeOfBackground):Graphic_element(poi
         setDrawing(new QPixmap(":map/background_double_corner.png"));
     }
 }
+
+QString Background::type()
+{
+    return "Background";
+}
