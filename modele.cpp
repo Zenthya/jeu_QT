@@ -11,6 +11,8 @@ Modele::Modele()
 
 
     Mapping(":map/map.json");
+
+
 }
 
 void  Modele::Mapping(QString datafile)
@@ -86,4 +88,24 @@ void  Modele::Mapping(QString datafile)
 
 
 
+}
+
+void Modele::RemoveProjectile_element(projetile * value)
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    Projectile_element.removeOne(value);
+}
+
+QList<projetile *> Modele::getProjectile_element()
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    return Projectile_element;
+}
+
+
+
+void Modele::addProjectile(projetile * value)
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    Projectile_element.append(value);
 }

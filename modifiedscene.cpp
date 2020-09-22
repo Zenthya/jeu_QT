@@ -53,5 +53,10 @@ void ModifiedScene::drawBackground(QPainter * Painter, const QRectF & )
         Painter->drawPixmap(modele->Map_element[i]->getCoordonnee(),modele->Map_element[i]->getDrawing());
     }
    Painter->drawPixmap(modele->player->getCoordonnee(),modele->player->getDrawing());
-    qDebug()<<"afficheur :"<<modele->player->getCoordonnee();
+
+   for(int i=0 ; i < modele->getProjectile_element().length();i++){
+
+       Painter->drawPixmap(modele->getProjectile_element()[i]->getCoordonnee(),modele->getProjectile_element()[i]->getDrawing());
+   }
+
 }

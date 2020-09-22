@@ -14,6 +14,8 @@ public:
 
     int getAmmo();
     void setAmmo(int value);
+    int lifetime_animation;
+    bool attack;
 
 private :
     int life ;

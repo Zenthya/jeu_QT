@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     afficheur.cpp \
+    arrow.cpp \
     background.cpp \
     conttrolleur.cpp \
     floore.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
     afficheur.h \
+    arrow.h \
     background.h \
     conttrolleur.h \
     floore.h \

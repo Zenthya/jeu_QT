@@ -1,29 +1,30 @@
 #ifndef PROJETILE_H
 #define PROJETILE_H
 
-#include <QThread>
-#include <QGraphicsRectItem>
+
+#include <graphic_element.h>
+
+class projetile : public Graphic_element{
 
 
-class projetile : public QThread , public QGraphicsPixmapItem
-{
-
-    Q_OBJECT
 
 
-signals :
-    void timer ();
+
 
 public:
-    projetile(QGraphicsPixmapItem *Rect,QPointF * Souris);
+    projetile(QPointF *point,QPointF *Souris);
     void run();
-private :
-    qreal YPos = 10;
-    qreal XPos = -10;
-    int lifetime = 0;
+    void setDrawing(QPixmap *);
 
-public slots :
-     void move();
+    QVector2D  * Position ;
+    qreal XPos;
+    qreal YPos;
+    qreal vitesse =10;
+    qreal angle =0 ;
+    int lifetime = 600;
+    QPointF *Souris;
+
+
 
 };
 

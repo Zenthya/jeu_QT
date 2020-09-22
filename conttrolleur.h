@@ -8,7 +8,7 @@
 
 class Afficheur;
 
-class Conttrolleur : QThread
+class Conttrolleur : public QThread
 {
 
 
@@ -18,6 +18,7 @@ public:
     void setModele(Modele *);
     Modele * getModele();
     void ReveivceEvent (QEvent *event);
+
     Afficheur  * Afficheur;
 
 

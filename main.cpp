@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
             scene->Conttrolleur = controlleur;
             afficheur->setScene(scene);
             afficheur->centerOn(0,0);
-
+            controlleur->start();
             afficheur->show();
     
     

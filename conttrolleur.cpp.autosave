@@ -107,7 +107,7 @@ void Conttrolleur::run(){
 
     while(true){
         msleep(20);
-           Afficheur->scene()->update();
+        Afficheur->scene()->update();
         for(int i =0 ; i<modele->getProjectile_element().length();i++){
            projetile  * element = modele->getProjectile_element()[i];
             if(element->lifetime> 0){
@@ -120,7 +120,7 @@ void Conttrolleur::run(){
                 if(element->lifetime == 0){
                         modele->RemoveProjectile_element(element);
                 }
-
+ 
 
 
             }
