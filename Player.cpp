@@ -1,8 +1,7 @@
-
-#include "Player.h"
+#include "player.h"
 #include "qdebug.h"
 
-Player::Player(QPointF * point):Graphic_element(point){
+Player::Player(QPointF * point):Graphic_element_alive(point){
     setDrawing(new QPixmap(":image/player.png"));
     Weapon *excalibur = new Sword(10);
     setWeapon(*excalibur);
@@ -19,16 +18,6 @@ int Player::getAmmo()
 void Player::setAmmo(int value)
 {
     ammo = value;
-}
-
-Weapon *Player::getWeapon()
-{
-    return weapon;
-}
-
-void Player::setWeapon(Weapon *value)
-{
-    weapon = value;
 }
 
 Weapon Player::getWeapon()

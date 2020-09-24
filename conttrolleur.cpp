@@ -6,7 +6,7 @@
 #include <arrow.h>
 #include "QtDebug"
 #include <monster.h>
-#include <QSoundEffec
+#include <QSoundEffect>
 #include <QRectF>
 
 Conttrolleur::Conttrolleur()
@@ -32,13 +32,11 @@ void Conttrolleur::ReveivceEvent(QEvent *event)
        modele->player->attack= true;
         }
     if(event->type()== QEvent::GraphicsSceneMouseMove){
-
         if(static_cast<QGraphicsSceneMouseEvent* >(event)->scenePos().x() < modele->player->getCoordonnee().x()) {
             modele->player->setSens("left");
         } else {
             modele->player->setSens("right");
         }
-
     }
    if(event->type()== QEvent::KeyPress ){
 
@@ -146,7 +144,7 @@ bool Conttrolleur::player_attack()
         QRectF bounding_mob = QRectF(mob_element->getCoordonnee(),mob_element->getDrawing().size());
         QRectF player_sword;
 
-        if(modele->player->sens){
+        if(modele->player->sens == QString("left")){
 
 
             player_sword = QRectF(QPointF(modele->player->getCoordonnee()).operator-=( QPointF(20,0)),modele->player->getDrawing().size().operator/=(2));

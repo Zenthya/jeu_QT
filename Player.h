@@ -12,8 +12,6 @@ public:
     void setLife(int value);
     int getAmmo();
     void setAmmo(int value);
-    int lifetime_animation;
-    bool attack;
     void animationAttack();
     void changeWeapon();
     int lifetime_animation=1000;
@@ -22,9 +20,9 @@ public:
     void setWeapon(Weapon &value);
     QString getSens() const;
     void setSens(const QString &value);
+    QString sens;
 
 private :
-    QString sens;
     int life ;
     int ammo;
     Weapon *weapon;
