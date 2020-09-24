@@ -36,3 +36,8 @@ void Graphic_element::setDrawing( QPixmap *value)
 QString Graphic_element::type(){
     return "Graphic_element";
 }
+
+Graphic_element_alive::Graphic_element_alive(QPointF * point):Graphic_element(point)
+{
+
+}

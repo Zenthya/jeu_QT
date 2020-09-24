@@ -16,12 +16,16 @@ void ModifiedScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 }
 
+void ModifiedScene::keyReleaseEvent(QKeyEvent *event)
+{
+ Conttrolleur->ReveivceEvent(event);
+}
+
 void ModifiedScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
    Conttrolleur->ReveivceEvent(event);
 
 }
-
 
 
 void ModifiedScene::setModele(Modele *setter)
@@ -58,11 +62,17 @@ void ModifiedScene::drawBackground(QPainter * Painter, const QRectF & )
 
         Painter->drawPixmap(modele->Map_element[i]->getCoordonnee(),modele->Map_element[i]->getDrawing());
     }
-   Painter->drawPixmap(modele->player->getCoordonnee(),modele->player->getDrawing());
+    for(int i=0 ; i <modele->Game_element.length();i++){
+
+        Painter->drawPixmap(modele->Game_element[i]->getCoordonnee(),modele->Game_element[i]->getDrawing());
+    }
+
+
 
    for(int i=0 ; i < modele->getProjectile_element().length();i++){
 
        Painter->drawPixmap(modele->getProjectile_element()[i]->getCoordonnee(),modele->getProjectile_element()[i]->getDrawing());
    }
+
 
 }

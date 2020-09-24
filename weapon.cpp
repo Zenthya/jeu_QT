@@ -29,5 +29,3 @@ QString Bow::type(){
 QString Sword::type(){
     return "sword";
 }
-
-

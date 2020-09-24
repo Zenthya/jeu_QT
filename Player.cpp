@@ -1,24 +1,15 @@
+
 #include "Player.h"
 #include "qdebug.h"
-
-using namespace std;
 
 Player::Player(QPointF * point):Graphic_element(point){
     setDrawing(new QPixmap(":image/player.png"));
     Weapon *excalibur = new Sword(10);
     setWeapon(*excalibur);
+    this->life = 8;
     qDebug() << weapon->type();
 }
 
-int Player::getLife()
-{
-    return life;
-}
-
-void Player::setLife(int value)
-{
-    life = value;
-}
 
 int Player::getAmmo()
 {
@@ -28,6 +19,16 @@ int Player::getAmmo()
 void Player::setAmmo(int value)
 {
     ammo = value;
+}
+
+Weapon *Player::getWeapon()
+{
+    return weapon;
+}
+
+void Player::setWeapon(Weapon *value)
+{
+    weapon = value;
 }
 
 Weapon Player::getWeapon()

@@ -20,4 +20,5 @@ QJsonArray Map::newMap(int numberOfMap) {
         QJsonArray item = value[0].toObject().value(QString("data")).toArray();
         return (item);
     }
+
 }

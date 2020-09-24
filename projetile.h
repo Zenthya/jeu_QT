@@ -12,7 +12,7 @@ class projetile : public Graphic_element{
 
 
 public:
-    projetile(QPointF *point,QPointF *Souris);
+    projetile(QPointF *point,QPointF *Souris,int);
     void run();
     void setDrawing(QPixmap *);
 
@@ -23,6 +23,7 @@ public:
     qreal angle =0 ;
     int lifetime = 600;
     QPointF *Souris;
+    int dmg;
 
 
 

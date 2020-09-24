@@ -10,8 +10,21 @@ Modele::Modele()
     player = new Player(new QPointF( 450,450));
 //    player->getWeapon();
 
+    Game_element.append(new Monster(new QPointF( 600,600),4)) ;
+    Game_element.append(player);
+    //les armes 
 
 
+
+    //les sons
+    Death_player= new QSoundEffect;
+    Death_player->setSource(QUrl::fromLocalFile(":/Sound/attaque_epee2.wav"));
+    Death_player->setVolume(0.30f);
+
+
+
+
+    
     Mapping(":map/map.json");
 
 
@@ -96,6 +109,11 @@ void Modele::RemoveProjectile_element(projetile * value)
 {   QMutex  mutex ;
     QMutexLocker locker(&mutex);
     Projectile_element.removeOne(value);
+}
+
+void Modele::play_sound()
+{
+    Death_player->play();
 }
 
 QList<projetile *> Modele::getProjectile_element()

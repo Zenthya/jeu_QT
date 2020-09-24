@@ -11,6 +11,7 @@ public:
     Weapon();
     virtual QString type();
     int dmg;
+
 };
 
 class Bow : public Weapon {

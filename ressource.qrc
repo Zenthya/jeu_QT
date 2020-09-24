@@ -15,6 +15,8 @@
         <file>player_sword_left_hand_walk_hurt.png</file>
         <file>player_sword_right_hand_walk.png</file>
         <file>player_sword_right_hand_walk_hurt.png</file>
+        <file>ennemi2.png</file>
+        <file>player_sword_left_hand_middle.png</file>
     </qresource>
     <qresource prefix="/map">
         <file>background.png</file>
@@ -27,5 +29,74 @@
         <file>wall_double_corner.png</file>
         <file>wall_middle.png</file>
         <file>map.json</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/healt/healt_0.png</file>
+        <file>images/healt/healt_1.png</file>
+        <file>images/healt/healt_10.png</file>
+        <file>images/healt/healt_2.png</file>
+        <file>images/healt/healt_3.png</file>
+        <file>images/healt/healt_4.png</file>
+        <file>images/healt/healt_5.png</file>
+        <file>images/healt/healt_6.png</file>
+        <file>images/healt/healt_7.png</file>
+        <file>images/healt/healt_8.png</file>
+        <file>images/healt/healt_9.png</file>
+        <file>images/map/background.png</file>
+        <file>images/map/background_double_corner.png</file>
+        <file>images/map/background_left_corner.png</file>
+        <file>images/map/background_right_corner.png</file>
+        <file>images/map/floore.png</file>
+        <file>images/map/wall_corner_left.png</file>
+        <file>images/map/wall_corner_right.png</file>
+        <file>images/map/wall_double_corner.png</file>
+        <file>images/map/wall_middle.png</file>
+        <file>images/monster/boss/boss_1.png</file>
+        <file>images/monster/boss/boss_2.png</file>
+        <file>images/monster/boss/boss_3.png</file>
+        <file>images/monster/monster_baloon.png</file>
+        <file>images/monster/monster_baloon_hurt.png</file>
+        <file>images/monster/monster_potatoes.png</file>
+        <file>images/monster/monster_potatoes_hurt.png</file>
+        <file>images/monster/monster_saucisse.png</file>
+        <file>images/monster/monster_saucisse_hurt.png</file>
+        <file>images/number/0.png</file>
+        <file>images/number/1.png</file>
+        <file>images/number/2.png</file>
+        <file>images/number/3.png</file>
+        <file>images/number/4.png</file>
+        <file>images/number/5.png</file>
+        <file>images/number/6.png</file>
+        <file>images/number/7.png</file>
+        <file>images/number/8.png</file>
+        <file>images/number/9.png</file>
+        <file>images/player/player_left.png</file>
+        <file>images/player/player_left_hurt.png</file>
+        <file>images/player/player_right.png</file>
+        <file>images/player/player_right_hurt.png</file>
+        <file>images/player_bow/player_bow_left_hand_up.png</file>
+        <file>images/player_bow/player_bow_left_hand_up_hurt.png</file>
+        <file>images/player_bow/player_bow_right_hand_up.png</file>
+        <file>images/player_bow/player_bow_right_hand_up_hurt.png</file>
+        <file>images/player_sword/player_sword_left_hand_down.png</file>
+        <file>images/player_sword/player_sword_left_hand_down_hurt.png</file>
+        <file>images/player_sword/player_sword_left_hand_middle.png</file>
+        <file>images/player_sword/player_sword_left_hand_middle_hurt.png</file>
+        <file>images/player_sword/player_sword_left_hand_up.png</file>
+        <file>images/player_sword/player_sword_left_hand_up_hurt.png</file>
+        <file>images/player_sword/player_sword_right_hand_down.png</file>
+        <file>images/player_sword/player_sword_right_hand_down_hurt.png</file>
+        <file>images/player_sword/player_sword_right_hand_middle.png</file>
+        <file>images/player_sword/player_sword_right_hand_middle_hurt.png</file>
+        <file>images/player_sword/player_sword_right_hand_up.png</file>
+        <file>images/player_sword/player_sword_right_hand_up_hurt.png</file>
+        <file>images/weapon/arrow.png</file>
+        <file>images/weapon/big_fire_ball.png</file>
+        <file>images/weapon/bow.png</file>
+        <file>images/weapon/fire_ball.png</file>
+        <file>images/weapon/sword.png</file>
+        <file>images/arrow_count.png</file>
+        <file>Sound/attaque_epee2.wav</file>
+        <file>Sound/death_player_song.wav</file>
     </qresource>
 </RCC>

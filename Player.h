@@ -4,7 +4,7 @@
 #include "graphic_element.h"
 #include "weapon.h"
 
-class Player : public Graphic_element
+class Player : public Graphic_element_alive
 {
 public:
     Player(QPointF *);
@@ -16,10 +16,10 @@ public:
     bool attack;
     void animationAttack();
     void changeWeapon();
-
+    int lifetime_animation=1000;
+    bool attack =false;
     Weapon getWeapon();
     void setWeapon(Weapon &value);
-
     QString getSens() const;
     void setSens(const QString &value);
 
