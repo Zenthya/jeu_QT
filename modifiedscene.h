@@ -16,6 +16,7 @@ signals:
   public :
     ModifiedScene(QObject *parent =0);
     void mousePressEvent(QGraphicsSceneMouseEvent *event) ;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event) ;
     void keyPressEvent(QKeyEvent *event);
     //void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void  setModele( Modele *);

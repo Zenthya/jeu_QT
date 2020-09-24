@@ -16,6 +16,12 @@ void ModifiedScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 }
 
+void ModifiedScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+   Conttrolleur->ReveivceEvent(event);
+
+}
+
 
 
 void ModifiedScene::setModele(Modele *setter)

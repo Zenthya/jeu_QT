@@ -1,12 +1,20 @@
 <RCC>
     <qresource prefix="/image">
-        <file>arrow.png</file>
-        <file>player.png</file>
         <file>floore_without_wall.png</file>
         <file>wall_middle.png</file>
         <file>wall_corner-left.png</file>
         <file>wall_double-corner.png</file>
         <file>wall_corner-right.png</file>
+        <file>arrow.png</file>
+        <file>player.png</file>
+        <file>player_bow_left_hand_walk.png</file>
+        <file>player_bow_left_hand_walk_hurt.png</file>
+        <file>player_bow_right_hand_walk.png</file>
+        <file>player_bow_right_hand_walk_hurt.png</file>
+        <file>player_sword_left_hand_walk.png</file>
+        <file>player_sword_left_hand_walk_hurt.png</file>
+        <file>player_sword_right_hand_walk.png</file>
+        <file>player_sword_right_hand_walk_hurt.png</file>
     </qresource>
     <qresource prefix="/map">
         <file>background.png</file>

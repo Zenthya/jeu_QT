@@ -1,12 +1,14 @@
 #include "modele.h"
-#include "player.h"
+#include "Player.h"
 #include "wall.h"
 #include "floore.h"
+#include "QDebug"
 
 
 Modele::Modele()
 {
     player = new Player(new QPointF( 450,450));
+//    player->getWeapon();
 
 
 
