@@ -22,4 +22,20 @@ private :
 
 };
 
+
+class Graphic_element_alive :public Graphic_element{
+
+
+public :
+    Graphic_element_alive(QPointF*);
+    int life;
+
+
+
+}
+
+
+
+                           ;
+
 #endif // GRAPHIC_ELEMENT_H

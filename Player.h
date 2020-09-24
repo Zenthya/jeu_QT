@@ -4,21 +4,26 @@
 #include "graphic_element.h"
 #include "weapon.h"
 
-class Player : public Graphic_element
+class Player : public Graphic_element_alive
 {
 public:
     Player(QPointF *);
 
-    int getLife();
-    void setLife(int value);
+
 
     int getAmmo();
     void setAmmo(int value);
-    int lifetime_animation;
-    bool attack;
+    int lifetime_animation=1000;
+    bool attack =false;
+    bool sens=true;
+
+    Weapon *getWeapon();
+    void setWeapon(Weapon *value);
+
 
 private :
-    int life ;
+    Weapon *weapon;
+
     int ammo;
 };
 

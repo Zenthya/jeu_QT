@@ -6,17 +6,18 @@
 #include <QGraphicsScene>
 #include <QPixmap>
 
-projetile::projetile(QPointF *point,QPointF *Souris):Graphic_element(point)
+projetile::projetile(QPointF *point,QPointF *Souris,int dmg):Graphic_element(point)
 {
 
 
    this->Souris = Souris ;
-    qDebug()<<*point;
+    this->dmg=dmg;
+
     qreal S =(point->x()-Souris->x()) ;
     qreal P =(point->y()-Souris->y()) ;
      Position = new QVector2D(S,P);
     QVector2D unitaire = Position->normalized().operator*=(vitesse);
-    qDebug()<<unitaire;
+
     XPos = unitaire.x();
     YPos =unitaire.y();
 

@@ -1,6 +1,7 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += multimedia
 
 CONFIG += c++11
 
@@ -26,6 +27,7 @@ SOURCES += \
     map.cpp \
     modele.cpp \
     modifiedscene.cpp \
+    monster.cpp \
     player.cpp \
     projetile.cpp \
     scenemoussed.cpp \
@@ -42,6 +44,7 @@ HEADERS += \
     map.h \
     modele.h \
     modifiedscene.h \
+    monster.h \
     player.h \
     projetile.h \
     scenemoussed.h \

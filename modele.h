@@ -14,7 +14,9 @@
 #include <projetile.h>
 #include<QMutex>
 #include<QMutexLocker>
-
+#include<monster.h>
+#include<QObject>
+#include <QSoundEffect>
 
 class Modele
 {
@@ -22,16 +24,21 @@ class Modele
 
 public:
     Modele();
-    QList<Graphic_element *> Game_element;
+    QList<Graphic_element_alive *> Game_element;
     QList<Graphic_element *> Map_element;
 
     Player  *player;
+    Monster * Leballon;
+    Sword Excalibur =Sword(8);
     void addProjectile(projetile  *);
 
     QList<projetile *> getProjectile_element();
 
 
     void RemoveProjectile_element( projetile *);
+    void play_sound();
+    QSoundEffect  * Death_player  ;
+
 
 private:
     void   Mapping(QString datafile);

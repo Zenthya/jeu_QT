@@ -1,21 +1,14 @@
 #include "player.h"
 
-Player::Player(QPointF * point):Graphic_element(point){
+Player::Player(QPointF * point):Graphic_element_alive(point){
 
 
-    setDrawing(new QPixmap(":image/player.png"));
+    setDrawing(new QPixmap(":/images/player_sword/player_sword_left_hand_up.png"));
+    this->life = 8;
+    setWeapon(new Bow(8));
 
 }
 
-int Player::getLife()
-{
-    return life;
-}
-
-void Player::setLife(int value)
-{
-    life = value;
-}
 
 int Player::getAmmo()
 {
@@ -25,4 +18,14 @@ int Player::getAmmo()
 void Player::setAmmo(int value)
 {
     ammo = value;
+}
+
+Weapon *Player::getWeapon()
+{
+    return weapon;
+}
+
+void Player::setWeapon(Weapon *value)
+{
+    weapon = value;
 }
