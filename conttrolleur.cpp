@@ -37,6 +37,10 @@ void Conttrolleur::ReveivceEvent(QEvent *event)
         } else {
             modele->player->setSens("right");
         }
+        if (!modele->player->attack)
+        {
+            modele->player->animationAttack();
+        }
     }
    if(event->type()== QEvent::KeyPress ){
 
@@ -173,14 +177,14 @@ void Conttrolleur::animate_player_sword(int  life_time, bool attack)
         }
         if(life_time>400){
 
-            modele->player->setDrawing( new QPixmap(":/images/player_sword/player_sword_left_hand_middle.png"));
+            modele->player->setDrawing( new QPixmap(":/images/player_sword/player_sword_" + modele->player->getSens() + "_hand_middle.png"));
             modele->player->lifetime_animation -=200;
 
         }else if(life_time<=400 && life_time>0){
-            modele->player->setDrawing( new QPixmap(":/images/player_sword/player_sword_left_hand_down.png"));
+            modele->player->setDrawing( new QPixmap(":/images/player_sword/player_sword_" + modele->player->getSens() + "_hand_down.png"));
             modele->player->lifetime_animation -=200;
         }else if(life_time<=0){
-            modele->player->setDrawing( new QPixmap(":/images/player_sword/player_sword_left_hand_up.png"));
+            modele->player->setDrawing( new QPixmap(":/images/player_sword/player_sword_" + modele->player->getSens() + "_hand_up.png"));
             modele->player->attack=false;
             modele->player->lifetime_animation=1000;
 
