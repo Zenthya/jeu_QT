@@ -2,29 +2,30 @@
 #include<QDebug>
 
 
-
-
 Weapon::Weapon()
 {
+
 }
 
 QString Weapon::type()
 {
-    return "Weapon";
+
 }
 
-Bow::Bow( int value){
+Bow::Bow( int value)
+{
     dmg = value;
 }
 
-QString Bow::type()
+Sword::Sword( int value)
 {
-    return "Bow";
+    dmg = value;
 }
-Sword::Sword(int value){
-    dmg=value;
+
+QString Bow::type(){
+    return "bow";
 }
 
 QString Sword::type(){
-    return"Sword";
+    return "sword";
 }

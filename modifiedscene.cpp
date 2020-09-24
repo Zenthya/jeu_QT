@@ -23,9 +23,9 @@ void ModifiedScene::keyReleaseEvent(QKeyEvent *event)
 
 void ModifiedScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-   // Conttrolleur->ReveivceEvent(event);
-}
+   Conttrolleur->ReveivceEvent(event);
 
+}
 
 
 void ModifiedScene::setModele(Modele *setter)

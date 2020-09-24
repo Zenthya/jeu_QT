@@ -17,33 +17,21 @@
 #include <modifiedscene.h>
 int main(int argc, char *argv[])
 {
-
-
     QApplication a(argc, argv);
 
-            Afficheur  * afficheur = new Afficheur;
-            Conttrolleur * controlleur = new Conttrolleur();
+    Afficheur  * afficheur = new Afficheur;
+    Conttrolleur * controlleur = new Conttrolleur();
 
-            Modele   modele =Modele();
-            ModifiedScene * scene = new ModifiedScene;
+    Modele   modele =Modele();
+    ModifiedScene * scene = new ModifiedScene;
 
-            controlleur->setModele(&modele);
-            controlleur->Afficheur=afficheur;
-            scene->setModele(&modele);
-            scene->Conttrolleur = controlleur;
-            afficheur->setScene(scene);
-            afficheur->centerOn(0,0);
-            controlleur->start();
-            afficheur->show();
-    
-    
-    
-    
-    
-
-
-
-
-
+    controlleur->setModele(&modele);
+    controlleur->Afficheur=afficheur;
+    scene->setModele(&modele);
+    scene->Conttrolleur = controlleur;
+    afficheur->setScene(scene);
+    afficheur->centerOn(0,0);
+    controlleur->start();
+    afficheur->show();
     return a.exec();
 }

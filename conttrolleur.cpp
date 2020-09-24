@@ -4,8 +4,9 @@
 #include <QEvent>
 #include <graphic_element.h>
 #include <arrow.h>
+#include "QtDebug"
 #include <monster.h>
-#include <QSoundEffect>
+#include <QSoundEffec
 #include <QRectF>
 
 Conttrolleur::Conttrolleur()
@@ -26,20 +27,17 @@ Modele *Conttrolleur::getModele()
 
 void Conttrolleur::ReveivceEvent(QEvent *event)
 {
-
-
     if(event->type()== QEvent::GraphicsSceneMousePress ){
-
        //modele->addProjectile(new arrow(new QPointF(modele->player->getCoordonnee()),new QPointF(static_cast<QGraphicsSceneMouseEvent* >(event)->scenePos())));
        modele->player->attack= true;
-
-       //event du clique
-       //mettre la fonction attaquer ici
-       
         }
     if(event->type()== QEvent::GraphicsSceneMouseMove){
 
-        qDebug()<<static_cast<QGraphicsSceneMouseEvent* >(event)->scenePos();
+        if(static_cast<QGraphicsSceneMouseEvent* >(event)->scenePos().x() < modele->player->getCoordonnee().x()) {
+            modele->player->setSens("left");
+        } else {
+            modele->player->setSens("right");
+        }
 
     }
    if(event->type()== QEvent::KeyPress ){
@@ -58,11 +56,11 @@ void Conttrolleur::ReveivceEvent(QEvent *event)
             case Qt::Key_D:
                 Key.append(&Droite);
                 break;
-
-
+            case Qt::Key_E:
+                modele->player->changeWeapon();
+                break;
+            }
         }
-        }
-
         if(event->type()== QEvent::KeyRelease ){
 
              switch (static_cast<QKeyEvent*>(event)->key()) {
@@ -81,11 +79,10 @@ void Conttrolleur::ReveivceEvent(QEvent *event)
                      break;
              }
 
-    }
+      }
 
 
 }
-
 
 
 void Conttrolleur::Deplacementjoueur(QString *event)
@@ -94,13 +91,11 @@ void Conttrolleur::Deplacementjoueur(QString *event)
 
     QPointF   position = modele->player->getCoordonnee();
     if(*event == QString("haut")){
-
         position.setY(position.y()-5);
    }else if(*event == QString("bas") ){
         position.setY(position.y()+5);
     }else if(*event == QString("gauche")){
         position.setX(position.x()-5);
-
     }else if(*event == QString("droite")){
         position.setX(position.x()+5);
         
@@ -174,12 +169,10 @@ return false;}
 
 void Conttrolleur::animate_player_sword(int  life_time, bool attack)
 {
-
     if(attack){
         if(!modele->Death_player->isPlaying()){
             emit sound_death();
         }
-
         if(life_time>400){
 
             modele->player->setDrawing( new QPixmap(":/images/player_sword/player_sword_left_hand_middle.png"));
@@ -197,24 +190,16 @@ void Conttrolleur::animate_player_sword(int  life_time, bool attack)
 
     }
 
-
 }
-
 
 void Conttrolleur::run(){
      bool monstre_touche =false;
-
     while(true){
-
-
-
         Afficheur->scene()->update();
         msleep(20);
-
         for(int i =0 ; i<modele->getProjectile_element().length();i++){
-           projetile  * element = modele->getProjectile_element()[i];
+            projetile  * element = modele->getProjectile_element()[i];
             if(element->lifetime> 0){
-
                 QPointF   position = element->getCoordonnee();
                 position.setX(position.x()-element->XPos);
                 position.setY(position.y()-element->YPos);
@@ -241,26 +226,15 @@ void Conttrolleur::run(){
                               modele->Game_element.removeOne(mob_element);
                           }
 
-
-
-
-
-
                 }
-
 
                 }
                 if(Controle_out_map(position)){element->setCoordonnee(new QPointF(position));}
                 element->lifetime -=10;
                 if(element->lifetime == 0){
-                        modele->RemoveProjectile_element(element);
+                    modele->RemoveProjectile_element(element);
                 }
-
-
-
             }
-
-
         }
         animate_player_sword(modele->player->lifetime_animation,modele->player->attack);
         for(int i=0;i<Key.length();i++){
@@ -280,4 +254,5 @@ void Conttrolleur::run(){
         }
 
 }}
+
 

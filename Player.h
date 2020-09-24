@@ -8,23 +8,26 @@ class Player : public Graphic_element_alive
 {
 public:
     Player(QPointF *);
-
-
-
+    int getLife();
+    void setLife(int value);
     int getAmmo();
     void setAmmo(int value);
+    int lifetime_animation;
+    bool attack;
+    void animationAttack();
+    void changeWeapon();
     int lifetime_animation=1000;
     bool attack =false;
-    bool sens=true;
-
-    Weapon *getWeapon();
-    void setWeapon(Weapon *value);
-
+    Weapon getWeapon();
+    void setWeapon(Weapon &value);
+    QString getSens() const;
+    void setSens(const QString &value);
 
 private :
-    Weapon *weapon;
-
+    QString sens;
+    int life ;
     int ammo;
+    Weapon *weapon;
 };
 
 #endif // PLAYER_H
