@@ -11,6 +11,7 @@ Modele::Modele()
     // The player
     player = new Player(new QPointF( 450,450));
 
+
     // The screenlife
     screen = new Screen(new QPointF( 50,50));
     health = new Health(new QPointF( 50,100));
@@ -18,7 +19,15 @@ Modele::Modele()
     number2= new Number2(new QPointF( 100,105));
 
     // The monsters
-    Game_element.append(new Monster(new QPointF( 600,600),4)) ;
+   
+
+    Game_element.append(new Ballon_monster(new QPointF( 400,600))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 1600,600))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 1800,750))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 1000,650))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 2600,750))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 5600,600))) ;
+
     Game_element.append(player);
     Game_element.append(screen);
     Game_element.append(health);
@@ -108,6 +117,28 @@ void  Modele::Mapping(QString datafile)
 }
 
 
+QList<Graphic_element_alive *> Modele::getGame_element()
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    return Game_element;
+}
+
+void Modele::setGame_element( QList<Graphic_element_alive *> &value)
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    Game_element = value;
+}
+
+void Modele::RemoveGame_element(Graphic_element_alive * value)
+{
+    QMutex  mutex ;
+        QMutexLocker locker(&mutex);
+        Game_element.removeOne(value);
+}
+
+
+
+
 void Modele::RemoveProjectile_element(projetile * value)
 {
     QMutex  mutex ;
@@ -135,4 +166,9 @@ void Modele::addProjectile(projetile * value)
     QMutex  mutex ;
     QMutexLocker locker(&mutex);
     Projectile_element.append(value);
+}
+
+coffre::coffre(QPointF *point):Graphic_element(point)
+{
+    setDrawing(new QPixmap(":/chest.png"));
 }

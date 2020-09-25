@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
     ModifiedScene * scene = new ModifiedScene;
     controlleur->setModele(&modele);
     controlleur->Afficheur=afficheur;
+
     scene->setModele(&modele);
     scene->Conttrolleur = controlleur;
     afficheur->setScene(scene);

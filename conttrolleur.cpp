@@ -12,7 +12,7 @@
 
 Conttrolleur::Conttrolleur()
 {
-    
+
 }
 void Conttrolleur::setModele(Modele * value)
 {
@@ -122,22 +122,41 @@ bool Conttrolleur::Controle_out_map(QPointF  position )
 
 bool Conttrolleur::player_attack()
 {
-    QList<Graphic_element_alive *> tab = modele->Game_element;
-    tab.removeOne(modele->player);
+
+        QList<Graphic_element_alive *> tab = modele->getGame_element();
+        tab.removeOne(modele->player);
+
     for(int i=0;i<tab.length();i++ ){
         Graphic_element_alive * mob_element= tab[i];
         QRectF bounding_mob = QRectF(mob_element->getCoordonnee(),mob_element->getDrawing().size());
         QRectF player_sword;
-        if(modele->player->getSens() == QString("left")){
-            player_sword = QRectF(QPointF(modele->player->getCoordonnee()).operator-=( QPointF(20,0)),modele->player->getDrawing().size().operator/=(2));
+
+        QPointF sens ;
+        if(modele->player->getSens()==QString("left")){
+            sens= QPointF(20,0);
+        }else{
+            sens= QPointF(10,0).operator-=(QPointF(modele->player->getDrawing().width(),0));
         }
+
+
+
+
+            player_sword = QRectF(QPointF(modele->player->getCoordonnee()).operator-=( sens),QSize(modele->player->getDrawing().width()/4,modele->player->getDrawing().height()));
+
+
         if(bounding_mob.intersects(player_sword)){
-            mob_element->life -=1;
-            if(mob_element->life==0){
-                modele->Game_element.removeOne(mob_element);
-            }
-            return true ;
-        }
+
+            mob_element->life -=modele->player->getWeapon().dmg;
+
+            List_hurt.append(new hurt(mob_element,300));
+
+
+
+         if(mob_element->life<0){
+             modele->RemoveGame_element(mob_element);
+         }
+         return true ;
+
     }
     return false;}
 
@@ -167,42 +186,91 @@ void Conttrolleur::animate_player_attack(int  life_time, bool attack)
     }
 }
 
+void Conttrolleur::hurt_animation(Graphic_element_alive * element,int  *life_time)
+{
+    QString data = element->type();
+    QString data_hurt =":/images/"+data+"_hurt.png";
+
+    if(*life_time >= 50){
+            *life_time -=50;
+            element->setDrawing( new QPixmap(data_hurt));
+    }else{
+        *life_time -=50;
+        element->setDrawing( new QPixmap(":/images/"+data+".png"));
+    }
+
+}
+
 void Conttrolleur::run(){
-    bool monstre_touche =false;
+
+     bool monstre_touche =false;
+
+      int last_time=0;
+      QElapsedTimer timer;
+      timer.start();
+
     while(true){
         Afficheur->scene()->update();
         msleep(30);
+
+
+        life_cadence+=1;
+
+
+
         for(int i =0 ; i<modele->getProjectile_element().length();i++){
+
             projetile  * element = modele->getProjectile_element()[i];
-            if(element->lifetime> 0){
+
                 QPointF   position = element->getCoordonnee();
                 position.setX(position.x()-element->XPos);
                 position.setY(position.y()-element->YPos);
 
-                for(int i=0; i<modele->Game_element.length();i++){
-                    Graphic_element_alive * mob_element = modele->Game_element[i];
-                    if(mob_element->getCoordonnee().x()<=position.x() &&
-                            mob_element->getCoordonnee().x()+mob_element->getDrawing().width() > position.x()  &&
-                            mob_element->getCoordonnee().y()<=position.y()  &&
-                            mob_element->getCoordonnee().y()+mob_element->getDrawing().height() >=position.y()
-                            ){
-                        modele->RemoveProjectile_element(element);
-                        mob_element->life-=element->dmg;
-                        emit sound_death();
-                        if(mob_element->life==0){
-                            modele->Game_element.removeOne(mob_element);
-                        }
-                    }
+
+
+                last_time=timer.elapsed();
+                for(int i=0; i<modele->getGame_element().length();i++){
+                    Graphic_element_alive * mob_element = modele->getGame_element()[i];
+
+
+                      if(mob_element->getCoordonnee().x()<=position.x() &&
+                          mob_element->getCoordonnee().x()+mob_element->getDrawing().width() > position.x()  &&
+                          mob_element->getCoordonnee().y()<=position.y()  &&
+                          mob_element->getCoordonnee().y()+mob_element->getDrawing().height() >=position.y()
+                               ){
+                          modele->RemoveProjectile_element(element);
+                          element->~projetile();
+
+
+                          mob_element->life-=element->dmg;
+
+                          List_hurt.append(new hurt(mob_element,300));
+
+
+                          if(mob_element->life<0){
+                              qDebug()<<"je suis mort";
+                              modele->RemoveGame_element(mob_element);
+                          }
+
                 }
-                if(Controle_out_map(position)){element->setCoordonnee(new QPointF(position));}
+
+
+                }
+
+
+                element->setCoordonnee(new QPointF(position));
                 element->lifetime -=10;
                 if(element->lifetime == 0){
                     modele->RemoveProjectile_element(element);
+                    element->~projetile();
                 }
 
-            }
+
         }
-        animate_player_attack(modele->player->lifetime_animation,modele->player->attack);
+
+        last_time=timer.elapsed();
+        animate_player_sword(modele->player->lifetime_animation,modele->player->attack);
+
         for(int i=0;i<Key.length();i++){
             Deplacementjoueur(Key[i]);
         }
@@ -214,6 +282,36 @@ void Conttrolleur::run(){
     }
 
 }
+
+
+        for(int i=0;i<List_hurt.length();i++){
+            hurt_animation(List_hurt[i]->element,&List_hurt[i]->lifetime);
+            if(List_hurt[i]->lifetime<0){
+                List_hurt.removeOne(List_hurt[i]);
+            }
+
+        }
+
+        for(int i=0;i<modele->getGame_element().length();i++){
+            Graphic_element_alive *mob = modele->getGame_element()[i];
+            int height= mob->getDrawing().height();
+            int width =mob->getDrawing().width();
+
+            if(mob->type()==QString("monster/monster_potatoes")){
+                if(life_cadence%mob->cadence==0){
+                    modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(0,height/2))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(-20,height/2)))));
+                    modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,0))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,-20)))));
+                    modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(width,height/2))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(width+20,height/2)))));
+                    modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,height))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,height+20)))));
+                }
+                if(life_cadence==10000){
+                    life_cadence=0;
+                }
+            }
+
+        }
+
+}}
 
 
 void Conttrolleur::MousePressDetection(QEvent *event)

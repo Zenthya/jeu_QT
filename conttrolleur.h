@@ -5,6 +5,7 @@
 #include "afficheur.h"
 #include "modele.h"
 
+
 class Afficheur;
 
 class Conttrolleur : public QThread
@@ -27,14 +28,28 @@ private :
     void Deplacementjoueur(QString * );
     bool Controle_out_map(QPointF );
     bool player_attack();
-    void animate_player_attack(int,bool);
-    Modele * modele ;
+
+    
+   
     void MousePressDetection(QEvent *event);
     void UpdateScreenPosition(QPointF position_screen, QPointF position_player);
 
-signals :
-    void sound_death();
+
+
+
+
+
+    void animate_player_sword(int,bool);
+    void hurt_animation(Graphic_element_alive *,int *);
+    int life_cadence =0;
+    Modele * modele ;
+    QList<hurt *>List_hurt;
+
+ signals :
+     void sound_death();
 };
+
+
 
 
 #endif // CONTTROLLEUR_H

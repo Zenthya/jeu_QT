@@ -6,6 +6,12 @@ Graphic_element::Graphic_element(QPointF * pose)
     Coordonnee = pose;
 }
 
+Graphic_element::~Graphic_element()
+{
+    delete Drawing;
+    delete Coordonnee;
+}
+
 QPointF & Graphic_element::getCoordonnee()
 {
     QMutexLocker locker(&mutex);

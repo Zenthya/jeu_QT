@@ -53,6 +53,7 @@ QString Player::getState() const
 void Player::setState(const QString &value)
 {
     state = value;
+
 }
 
 
@@ -60,17 +61,18 @@ void Player::animationAttack()
 {
     QString path = ":/assets/images/player_" + weapon->type() + "/player_" + weapon->type() + "_" + getSens() + "_hand_state1.png";
     setDrawing(new QPixmap (path));
+
 }
 
 
 void Player::changeWeapon()
 {
     if(weapon->type() == "sword") {
-        Weapon *firefly = new Bow(10);
+        Weapon *firefly = new Bow(5);
         setWeapon(*firefly);
         animationAttack();
     } else if(weapon->type() == "bow") {
-        Weapon *excalibur = new Sword(10);
+        Weapon *excalibur = new Sword(1);
         setWeapon(*excalibur);
         animationAttack();
     }

@@ -8,7 +8,7 @@ class Player : public Graphic_element_alive
 {
 public:
     Player(QPointF *);
-    int getLife();
+
     void setLife(int value);
     int getAmmo();
     void setAmmo(int value);
@@ -18,6 +18,7 @@ public:
     void setWeapon(Weapon &value);
     QString getSens()const;
     void setSens(const QString &value);
+
     QString getPath();
     QString getState() const;
     void setState(const QString &value);
@@ -25,11 +26,14 @@ public:
     bool attack =false;
     Weapon *weapon;
 
+    QString sens;
+
+
 private :
-    int life ;
+
     int ammo;
     QString state;
-    QString sens;
+   
 };
 
 #endif // PLAYER_H

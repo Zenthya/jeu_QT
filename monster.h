@@ -9,4 +9,36 @@ public:
 
 };
 
+
+class Ballon_monster :public Monster{
+
+public :
+    Ballon_monster(QPointF* point):Monster(point,5){
+
+
+    };
+    QString type(){
+        return "monster/monster_baloon";
+    };
+
+};
+
+class Patatoes_monster :public Monster{
+
+public :
+
+    Patatoes_monster(QPointF* point);
+
+
+    QString type(){
+        return "monster/monster_potatoes";
+    };
+
+
+};
+class The_Boss:public Monster{
+
+
+};
+
 #endif // MONSTER_H

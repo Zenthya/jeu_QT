@@ -19,7 +19,7 @@ signals:
     void keyReleaseEvent(QKeyEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
-    //void mousePressEvent(QGraphicsSceneMouseEvent *event);
+
     void  setModele( Modele *);
     Modele * getModele();
 
