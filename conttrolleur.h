@@ -6,6 +6,7 @@
 #include "afficheur.h"
 #include "modele.h"
 
+
 class Afficheur;
 
 class Conttrolleur : public QThread
@@ -32,11 +33,15 @@ private :
     bool Controle_out_map(QPointF );
     bool player_attack();
     void animate_player_sword(int,bool);
+    void hurt_animation(Graphic_element_alive *,int *);
+    int life_cadence =0;
     Modele * modele ;
-
+    QList<hurt *>List_hurt;
 
  signals :
      void sound_death();
 };
+
+
 
 #endif // CONTTROLLEUR_H

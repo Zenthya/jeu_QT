@@ -7,6 +7,7 @@ class Graphic_element
 {
 public:
     Graphic_element(QPointF *);
+    virtual ~Graphic_element();
     QMutex mutex;
     QPointF &  getCoordonnee() ;
     void setCoordonnee( QPointF *value);
@@ -25,6 +26,7 @@ class Graphic_element_alive :public Graphic_element
 public :
     Graphic_element_alive(QPointF*);
     int life;
+    int cadence;
 };
 
 #endif // GRAPHIC_ELEMENT_H

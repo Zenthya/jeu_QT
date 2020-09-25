@@ -7,5 +7,9 @@ class arrow : public projetile
 public:
     arrow(QPointF *,QPointF *);
 };
+class fire_ball: public projetile{
+public:
+    fire_ball(QPointF *,QPointF *);
+};
 
 #endif // ARROW_H

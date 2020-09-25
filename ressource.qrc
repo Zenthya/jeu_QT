@@ -98,5 +98,6 @@
         <file>images/arrow_count.png</file>
         <file>Sound/attaque_epee2.wav</file>
         <file>Sound/death_player_song.wav</file>
+        <file>chest.png</file>
     </qresource>
 </RCC>

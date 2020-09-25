@@ -62,9 +62,9 @@ void ModifiedScene::drawBackground(QPainter * Painter, const QRectF & )
 
         Painter->drawPixmap(modele->Map_element[i]->getCoordonnee(),modele->Map_element[i]->getDrawing());
     }
-    for(int i=0 ; i <modele->Game_element.length();i++){
+    for(int i=0 ; i <modele->getGame_element().length();i++){
 
-        Painter->drawPixmap(modele->Game_element[i]->getCoordonnee(),modele->Game_element[i]->getDrawing());
+        Painter->drawPixmap(modele->getGame_element()[i]->getCoordonnee(),modele->getGame_element()[i]->getDrawing());
     }
 
 

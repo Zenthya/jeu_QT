@@ -40,21 +40,27 @@ void Player::setSens(const QString &value)
     sens = value;
 }
 
+QString Player::type()
+{
+  return "player_sword/player_sword_left_hand_up";
+}
+
 
 void Player::animationAttack()
 {
     QString path = ":/image/player_" + weapon->type() + "_" + getSens() + "_hand_walk.png";
     setDrawing(new QPixmap (path));
+
 }
 
 void Player::changeWeapon()
 {
     if(weapon->type() == "sword") {
-        Weapon *firefly = new Bow(10);
+        Weapon *firefly = new Bow(5);
         setWeapon(*firefly);
         animationAttack();
     } else if(weapon->type() == "bow") {
-        Weapon *excalibur = new Sword(10);
+        Weapon *excalibur = new Sword(1);
         setWeapon(*excalibur);
         animationAttack();
     }

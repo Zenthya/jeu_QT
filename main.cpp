@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 
     controlleur->setModele(&modele);
     controlleur->Afficheur=afficheur;
+
     scene->setModele(&modele);
     scene->Conttrolleur = controlleur;
     afficheur->setScene(scene);

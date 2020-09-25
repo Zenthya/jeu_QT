@@ -13,6 +13,7 @@ class projetile : public Graphic_element{
 
 public:
     projetile(QPointF *point,QPointF *Souris,int);
+    ~projetile();
     void run();
     void setDrawing(QPixmap *);
 

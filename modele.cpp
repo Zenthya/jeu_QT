@@ -10,7 +10,12 @@ Modele::Modele()
     player = new Player(new QPointF( 450,450));
 //    player->getWeapon();
 
-    Game_element.append(new Monster(new QPointF( 600,600),4)) ;
+    Game_element.append(new Ballon_monster(new QPointF( 400,600))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 1600,600))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 1800,750))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 1000,650))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 2600,750))) ;
+    Game_element.append(new Patatoes_monster(new QPointF( 5600,600))) ;
     Game_element.append(player);
     //les armes 
 
@@ -105,6 +110,27 @@ void  Modele::Mapping(QString datafile)
 
 }
 
+QList<Graphic_element_alive *> Modele::getGame_element()
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    return Game_element;
+}
+
+void Modele::setGame_element( QList<Graphic_element_alive *> &value)
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    Game_element = value;
+}
+
+void Modele::RemoveGame_element(Graphic_element_alive * value)
+{
+    QMutex  mutex ;
+        QMutexLocker locker(&mutex);
+        Game_element.removeOne(value);
+}
+
+
+
 void Modele::RemoveProjectile_element(projetile * value)
 {   QMutex  mutex ;
     QMutexLocker locker(&mutex);
@@ -128,4 +154,9 @@ void Modele::addProjectile(projetile * value)
 {   QMutex  mutex ;
     QMutexLocker locker(&mutex);
     Projectile_element.append(value);
+}
+
+coffre::coffre(QPointF *point):Graphic_element(point)
+{
+    setDrawing(new QPixmap(":/chest.png"));
 }

@@ -8,7 +8,7 @@ class Player : public Graphic_element_alive
 {
 public:
     Player(QPointF *);
-    int getLife();
+
     void setLife(int value);
     int getAmmo();
     void setAmmo(int value);
@@ -21,9 +21,10 @@ public:
     QString getSens() const;
     void setSens(const QString &value);
     QString sens;
+    QString type();
 
 private :
-    int life ;
+
     int ammo;
     Weapon *weapon;
 };

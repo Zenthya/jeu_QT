@@ -24,13 +24,13 @@ class Modele
 
 public:
     Modele();
-    QList<Graphic_element_alive *> Game_element;
-    QList<Graphic_element *> Map_element;
+
 
     Player  *player;
     Monster * Leballon;
     Sword Excalibur =Sword(8);
     void addProjectile(projetile  *);
+    QPixmap fireball =QPixmap(":/images/weapon/fire_ball.png");
 
     QList<projetile *> getProjectile_element();
 
@@ -38,11 +38,40 @@ public:
     void RemoveProjectile_element( projetile *);
     void play_sound();
     QSoundEffect  * Death_player  ;
+    QList<Graphic_element *> Map_element;
 
+
+
+    QList<Graphic_element_alive *> getGame_element() ;
+    void setGame_element( QList<Graphic_element_alive *> &value);
+    void RemoveGame_element( Graphic_element_alive *);
 
 private:
     void   Mapping(QString datafile);
+    QList<Graphic_element_alive *> Game_element;
+
     QList<projetile  *> Projectile_element;
+
+};
+class hurt{
+
+public :
+    hurt(Graphic_element_alive *element,int life_time){
+        this->element=element;
+        this->lifetime =life_time;
+    };
+    ~hurt();
+    Graphic_element_alive * element;
+    int lifetime ;
+
+
+
+};
+class coffre:Graphic_element {
+
+public :
+    coffre(QPointF *);
+
 
 };
 
