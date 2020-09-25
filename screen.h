@@ -3,7 +3,7 @@
 
 #include "graphic_element.h"
 
-class Screen : public Graphic_element_alive
+class Screen : public Graphic_element
 {
 public:
     Screen(QPointF *);
@@ -27,6 +27,11 @@ public:
     Number2(QPointF *);
 };
 
+class Chest : public Screen
+{
+public:
+    Chest(QPointF *);
+};
 
 
 #endif // SCREEN_H

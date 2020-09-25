@@ -12,8 +12,8 @@ Patatoes_monster::Patatoes_monster(QPointF *point):Monster(point,3)
     cadence= 100;
 }
 
-The_Boss::The_Boss(QPointF *point ):Monster(point,3)
+The_Boss::The_Boss(QPointF *point ):Monster(point,30)
 {
-    setDrawing(new QPixmap(":/assets/images/monster/boss/boss_1.png"));
+    setDrawing(new QPixmap(":/assets/images/monster/boss/boss_3.png"));
     cadence= 70;
 }

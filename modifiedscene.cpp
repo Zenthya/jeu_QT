@@ -44,6 +44,9 @@ void ModifiedScene::keyPressEvent(QKeyEvent *event)
 
 void ModifiedScene::drawBackground(QPainter * Painter, const QRectF & )
 {
+
+    QMutex  mutex ;
+    QMutexLocker locker(&mutex);
     for(int i=0 ; i <modele->Map_element.length();i++){
         Painter->drawPixmap(modele->Map_element[i]->getCoordonnee(),modele->Map_element[i]->getDrawing());
     }
@@ -55,5 +58,10 @@ void ModifiedScene::drawBackground(QPainter * Painter, const QRectF & )
     }
     for(int i=0 ; i < modele->getProjectile_element().length();i++){
         Painter->drawPixmap(modele->getProjectile_element()[i]->getCoordonnee(),modele->getProjectile_element()[i]->getDrawing());
+    }
+    for(int i=0 ; i <modele->getChest_element().length();i++){
+
+        Painter->drawPixmap(modele->getChest_element()[i]->getCoordonnee(),modele->getChest_element()[i]->getDrawing());
+
     }
 }

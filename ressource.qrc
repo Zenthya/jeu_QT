@@ -61,7 +61,6 @@
         <file>images/weapon/fire_ball.png</file>
         <file>images/weapon/sword.png</file>
         <file>images/arrow_count.png</file>
-
         <file>sound/attaque_epee2.wav</file>
         <file>sound/death_player_song.wav</file>
         <file>images/player_bow/player_bow_left_hand_state1.png</file>
@@ -80,6 +79,6 @@
         <file>images/object/chest.png</file>
         <file>images/object/potion_empty.png</file>
         <file>images/object/potion_full.png</file>
-
+        <file>images/monster/boss/boss_3_hurt.png</file>
     </qresource>
 </RCC>

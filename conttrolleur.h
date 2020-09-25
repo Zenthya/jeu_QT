@@ -28,7 +28,8 @@ private :
     void Deplacementjoueur(QString * );
     bool Controle_out_map(QPointF );
     bool player_attack();
-
+    bool player_attack_chest();
+    bool pause_game=true;
     
    
     void MousePressDetection(QEvent *event);
