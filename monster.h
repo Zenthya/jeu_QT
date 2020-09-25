@@ -37,7 +37,12 @@ public :
 
 };
 class The_Boss:public Monster{
-
+     public:
+    The_Boss(QPointF *);
+    int status ;
+    QString type(){
+        return "monster/boss/boss";
+    }
 
 };
 

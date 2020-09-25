@@ -8,7 +8,7 @@
 #include <monster.h>
 #include <QSoundEffect>
 #include <QRectF>
-#include <QElapsedTimer>
+#include <QtMath>
 
 Conttrolleur::Conttrolleur()
 {
@@ -247,7 +247,10 @@ void Conttrolleur::run(){
 
                           List_hurt.append(new hurt(mob_element,300));
 
+                          if(mob_element->type().contains("player")){
 
+                              modele->screen->setDrawing(new QPixmap(":/assets/images/healt/healt_"+QString::number(modele->player->life)+".png"));
+                          }
                           if(mob_element->life<0){
 
                               modele->RemoveGame_element(mob_element);
@@ -269,7 +272,7 @@ void Conttrolleur::run(){
 
         }
 
-        last_time=timer.elapsed();
+
         animate_player_sword(modele->player->lifetime_animation,modele->player->attack);
 
         for(int i=0;i<Key.length();i++){
@@ -297,17 +300,34 @@ void Conttrolleur::run(){
             Graphic_element_alive *mob = modele->getGame_element()[i];
             int height= mob->getDrawing().height();
             int width =mob->getDrawing().width();
+            qreal S= mob->getCoordonnee().x() - modele->player->getCoordonnee().x();
+            qreal P = mob->getCoordonnee().y() - modele->player->getCoordonnee().y();
+            qreal normeSP =qSqrt((S*S)+(P*P));
 
+            if(normeSP<900){
             if(mob->type()==QString("monster/monster_potatoes")){
                 if(life_cadence%mob->cadence==0){
                     modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(0,height/2))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(-20,height/2)))));
                     modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,0))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,-20)))));
                     modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(width,height/2))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(width+20,height/2)))));
                     modele->addProjectile(new fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,height))),   new QPointF( QPointF(mob->getCoordonnee()).operator+=(QPointF(width/2,height+20)))));
+
                 }
                 if(life_cadence==10000){
                     life_cadence=0;
                 }
+            }else if(mob->type().contains(QString("boss"))){
+
+                if(life_cadence%mob->cadence==0){
+                    modele->addProjectile(new big_fire_ball(new QPointF(QPointF(mob->getCoordonnee()).operator+=(QPointF(0,height))), new QPointF (modele->player->getCoordonnee()  )));
+
+
+                }
+                if(life_cadence==10000){
+                    life_cadence=0;
+                }
+
+            }
             }
 
         }}
@@ -318,7 +338,15 @@ void Conttrolleur::run(){
 void Conttrolleur::MousePressDetection(QEvent *event)
 {
     if (modele->player->weapon->type() == "bow" and modele->player->getAmmo() >= 0 ) {
-        modele->addProjectile(new arrow(new QPointF(modele->player->getCoordonnee()),new QPointF(static_cast<QGraphicsSceneMouseEvent* >(event)->scenePos())));
+        int height= modele->player->getDrawing().height();
+        int width =modele->player->getDrawing().width();
+        if(modele->player->sens==QString("left")){
+        modele->addProjectile(new arrow(new QPointF(QPointF(modele->player->getCoordonnee()).operator+=(QPointF(0,width/2))),new QPointF(static_cast<QGraphicsSceneMouseEvent* >(event)->scenePos())));
+
+        }else{
+            modele->addProjectile(new arrow(new QPointF(QPointF(modele->player->getCoordonnee()).operator+=(QPointF(height,width/2))),new QPointF(static_cast<QGraphicsSceneMouseEvent* >(event)->scenePos())));
+
+        }
         int number_arrow = modele->player->getAmmo();
         if (number_arrow <=9){
             modele->number1->setDrawing( new QPixmap(":/assets/images/number/0.png"));
@@ -338,6 +366,8 @@ void Conttrolleur::MousePressDetection(QEvent *event)
 
 void Conttrolleur::UpdateScreenPosition(QPointF position_screen, QPointF position_player)
 {
+
+
     if(position_player.x() > 960 and  position_player.x() < 7440) {
         position_screen.setX(position_player.x()-910);
     } else if(position_player.x() > 7440) {

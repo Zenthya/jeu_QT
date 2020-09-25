@@ -24,6 +24,7 @@ Modele::Modele()
     Game_element.append(new Ballon_monster(new QPointF( 400,600))) ;
     Game_element.append(new Patatoes_monster(new QPointF( 1600,600))) ;
     Game_element.append(new Patatoes_monster(new QPointF( 1800,750))) ;
+    Game_element.append(new The_Boss(new QPointF( 1000,800))) ;
 
 
 

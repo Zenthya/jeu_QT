@@ -5,7 +5,7 @@ Player::Player(QPointF * point):Graphic_element_alive(point){
     setDrawing(new QPixmap(":/assets/images/player/player_left.png"));
     Weapon *excalibur = new Sword(10);
     setWeapon(*excalibur);
-    this->life = 8;
+    this->life = 10;
     this->ammo = 20;
     qDebug() << weapon->type();
 }

@@ -13,6 +13,10 @@ class fire_ball: public projetile{
 public:
     fire_ball(QPointF *,QPointF *);
 };
+class big_fire_ball: public projetile{
+public:
+    big_fire_ball(QPointF *,QPointF *);
+};
 
 
 #endif // ARROW_H
