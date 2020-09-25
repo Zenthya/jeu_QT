@@ -18,8 +18,6 @@ void Graphic_element::setCoordonnee( QPointF * value)
     Coordonnee =  value;
 }
 
-
-
 QPixmap & Graphic_element::getDrawing()
 {
     QMutexLocker locker(&mutex);

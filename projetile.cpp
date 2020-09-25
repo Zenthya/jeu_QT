@@ -8,8 +8,8 @@
 
 projetile::projetile(QPointF *point,QPointF *Souris,int dmg):Graphic_element(point)
 {
-   this->Souris = Souris ;
-   this->dmg=dmg;
+    this->Souris = Souris ;
+    this->dmg=dmg;
     qreal S =(point->x()-Souris->x()) ;
     qreal P =(point->y()-Souris->y()) ;
     Position = new QVector2D(S,P);

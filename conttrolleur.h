@@ -30,6 +30,7 @@ private :
     void animate_player_attack(int,bool);
     Modele * modele ;
     void MousePressDetection(QEvent *event);
+    void UpdateScreenPosition(QPointF position_screen, QPointF position_player);
 
 signals :
     void sound_death();

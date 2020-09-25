@@ -4,7 +4,6 @@
 Screen::Screen(QPointF * point):Graphic_element_alive(point)
 {
     setDrawing(new QPixmap(":/assets/images/healt/healt_10.png"));
-
 }
 
 Health::Health(QPointF * point):Screen(point)

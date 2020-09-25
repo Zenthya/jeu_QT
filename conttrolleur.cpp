@@ -98,27 +98,9 @@ void Conttrolleur::Deplacementjoueur(QString *event)
         Afficheur->centerOn(position_player);
         modele->player->setCoordonnee(new QPointF(position_player));
         if(position_screen.y() >= 50 and position_screen.x() >= 50){
-            if(position_player.x() > 960 and  position_player.x() < 7440) {
-                position_screen.setX(position_player.x()-910);
-            } else if(position_player.x() > 7440) {
-                position_screen.setX(6530);
-            } else {
-                position_screen.setX(50);
-            }
-            if(position_player.y() > 540 and position_player.y() < 5060) {
-                position_screen.setY(position_player.y()-490);
-            } else if(position_player.y() > 5060) {
-                position_screen.setY(4570);
-            } else {
-                position_screen.setY(50);
-            }
-            modele->screen->setCoordonnee(new QPointF(position_screen));
-            modele->health->setCoordonnee(new QPointF(position_screen.x(), position_screen.y() + 50));
-            modele->number1->setCoordonnee(new QPointF(position_screen.x() + 35, position_screen.y() + 55));
-            modele->number2->setCoordonnee(new QPointF(position_screen.x() + 50, position_screen.y() + 55));
+            UpdateScreenPosition(position_screen, position_player);
         }
     }
-
 }
 
 bool Conttrolleur::Controle_out_map(QPointF  position )
@@ -186,7 +168,6 @@ void Conttrolleur::animate_player_attack(int  life_time, bool attack)
 }
 
 void Conttrolleur::run(){
-
     bool monstre_touche =false;
     while(true){
         Afficheur->scene()->update();
@@ -242,7 +223,7 @@ void Conttrolleur::MousePressDetection(QEvent *event)
         int number_arrow = modele->player->getAmmo();
         if (number_arrow <=9){
             modele->number1->setDrawing( new QPixmap(":/assets/images/number/0.png"));
-//            modele->number1->setPix
+            //            modele->number1->setPix
             modele->number2->setDrawing( new QPixmap(":/assets/images/number/" + QString::number(number_arrow) + ".png"));
         } else if(number_arrow > 9){
             modele->number1->setDrawing( new QPixmap(":/assets/images/number/" + QString::number(number_arrow)[0] + ".png"));
@@ -254,5 +235,27 @@ void Conttrolleur::MousePressDetection(QEvent *event)
     if(modele->player->weapon->type() == "sword"){
         modele->player->attack= true;
     }
+}
+
+void Conttrolleur::UpdateScreenPosition(QPointF position_screen, QPointF position_player)
+{
+    if(position_player.x() > 960 and  position_player.x() < 7440) {
+        position_screen.setX(position_player.x()-910);
+    } else if(position_player.x() > 7440) {
+        position_screen.setX(6530);
+    } else {
+        position_screen.setX(50);
+    }
+    if(position_player.y() > 540 and position_player.y() < 5060) {
+        position_screen.setY(position_player.y()-490);
+    } else if(position_player.y() > 5060) {
+        position_screen.setY(4570);
+    } else {
+        position_screen.setY(50);
+    }
+    modele->screen->setCoordonnee(new QPointF(position_screen));
+    modele->health->setCoordonnee(new QPointF(position_screen.x(), position_screen.y() + 50));
+    modele->number1->setCoordonnee(new QPointF(position_screen.x() + 35, position_screen.y() + 55));
+    modele->number2->setCoordonnee(new QPointF(position_screen.x() + 50, position_screen.y() + 55));
 }
 

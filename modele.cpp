@@ -4,6 +4,7 @@
 #include "floore.h"
 #include "screen.h"
 #include "QDebug"
+#include "QLabel"
 
 Modele::Modele()
 {
