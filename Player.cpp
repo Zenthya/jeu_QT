@@ -40,9 +40,9 @@ void Player::setSens(const QString &value)
     sens = value;
 }
 
-QString Player::getPath()
+QString Player::type()
 {
-    return ":/assets/images/player_" + type() + "/player_" + type() + "_" + getSens() + "_hand_" + getState() ;
+    return "player_" + weapon->type() + "/player_" + weapon->type() + "_" + getSens() + "_hand_" + getState() ;
 }
 
 QString Player::getState() const

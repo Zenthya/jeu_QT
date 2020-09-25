@@ -33,12 +33,6 @@ private :
    
     void MousePressDetection(QEvent *event);
     void UpdateScreenPosition(QPointF position_screen, QPointF position_player);
-
-
-
-
-
-
     void animate_player_sword(int,bool);
     void hurt_animation(Graphic_element_alive *,int *);
     int life_cadence =0;

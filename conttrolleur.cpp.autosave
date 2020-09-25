@@ -269,7 +269,7 @@ void Conttrolleur::run(){
 
         }
 
-        last_time=timer.elapsed();
+        
         animate_player_sword(modele->player->lifetime_animation,modele->player->attack);
 
         for(int i=0;i<Key.length();i++){

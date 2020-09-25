@@ -24,15 +24,11 @@ Modele::Modele()
     Game_element.append(new Ballon_monster(new QPointF( 400,600))) ;
     Game_element.append(new Patatoes_monster(new QPointF( 1600,600))) ;
     Game_element.append(new Patatoes_monster(new QPointF( 1800,750))) ;
-    Game_element.append(new Patatoes_monster(new QPointF( 1000,650))) ;
-    Game_element.append(new Patatoes_monster(new QPointF( 2600,750))) ;
-    Game_element.append(new Patatoes_monster(new QPointF( 5600,600))) ;
+
+
 
     Game_element.append(player);
-    Game_element.append(screen);
-    Game_element.append(health);
-    Game_element.append(number1);
-    Game_element.append(number2);
+
 
     //The weapons
 
@@ -44,6 +40,10 @@ Modele::Modele()
 
     // The map
     Mapping(":/assets/map_data/map.json");
+    Map_element.append(screen);
+    Map_element.append(health);
+    Map_element.append(number1);
+    Map_element.append(number2);
 }
 
 void  Modele::Mapping(QString datafile)

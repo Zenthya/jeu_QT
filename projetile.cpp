@@ -27,8 +27,8 @@ projetile::~projetile()
 
 void projetile::setDrawing(QPixmap * draw)
 {
-   // Graphic_element::setDrawing(new QPixmap(draw->transformed(QTransform().rotate(angle))));
-    Graphic_element::setDrawing(draw);
+    Graphic_element::setDrawing(new QPixmap(draw->transformed(QTransform().rotate(angle))));
+
 }
 
 

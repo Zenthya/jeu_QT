@@ -30,7 +30,6 @@ SOURCES += \
     monster.cpp \
     player.cpp \
     projetile.cpp \
-    scenemoussed.cpp \
     screen.cpp \
     wall.cpp \
     weapon.cpp
@@ -48,7 +47,6 @@ HEADERS += \
     monster.h \
     player.h \
     projetile.h \
-    scenemoussed.h \
     screen.h \
     wall.h \
     weapon.h

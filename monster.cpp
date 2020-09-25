@@ -8,6 +8,6 @@ Monster::Monster(QPointF * point,int life):Graphic_element_alive(point)
 
 Patatoes_monster::Patatoes_monster(QPointF *point):Monster(point,3)
 {
-    setDrawing(new QPixmap(":/images/monster/monster_potatoes.png"));
+    setDrawing(new QPixmap(":/assets/images/monster/monster_potatoes.png"));
     cadence= 100;
 }

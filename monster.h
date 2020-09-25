@@ -13,7 +13,7 @@ public:
 class Ballon_monster :public Monster{
 
 public :
-    Ballon_monster(QPointF* point):Monster(point,5){
+    Ballon_monster(QPointF* point):Monster(point,10){
 
 
     };

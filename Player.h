@@ -19,7 +19,7 @@ public:
     QString getSens()const;
     void setSens(const QString &value);
 
-    QString getPath();
+    QString type();
     QString getState() const;
     void setState(const QString &value);
     int lifetime_animation=1000;

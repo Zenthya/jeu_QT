@@ -2,7 +2,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <Player.h>
-#include "scenemoussed.h"
+
 #include <QPushButton>
 #include <wall.h>
 #include <floore.h>
