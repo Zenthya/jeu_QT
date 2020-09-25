@@ -6,16 +6,10 @@
 
 class projetile : public Graphic_element{
 
-
-
-
-
-
 public:
     projetile(QPointF *point,QPointF *Souris,int);
     void run();
     void setDrawing(QPixmap *);
-
     QVector2D  * Position ;
     qreal XPos;
     qreal YPos;
@@ -24,9 +18,6 @@ public:
     int lifetime = 600;
     QPointF *Souris;
     int dmg;
-
-
-
 };
 
 #endif // PROJETILE_H

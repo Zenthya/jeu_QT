@@ -1,7 +1,6 @@
 #ifndef CONTTROLLEUR_H
 #define CONTTROLLEUR_H
 
-
 #include <QThread>
 #include "afficheur.h"
 #include "modele.h"
@@ -11,16 +10,13 @@ class Afficheur;
 class Conttrolleur : public QThread
 {
     Q_OBJECT
-
 public:
     Conttrolleur();
     void run();
     void setModele(Modele *);
     Modele * getModele();
     void ReveivceEvent (QEvent *event);
-
     Afficheur  * Afficheur;
-
 
 private :
     QList<QString *> Key;
@@ -31,12 +27,13 @@ private :
     void Deplacementjoueur(QString * );
     bool Controle_out_map(QPointF );
     bool player_attack();
-    void animate_player_sword(int,bool);
+    void animate_player_attack(int,bool);
     Modele * modele ;
+    void MousePressDetection(QEvent *event);
 
-
- signals :
-     void sound_death();
+signals :
+    void sound_death();
 };
+
 
 #endif // CONTTROLLEUR_H

@@ -26,6 +26,6 @@ void scenemoussed::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
 void scenemoussed::drawBackground(QPainter *Painter,const QRectF  &rect)
 {
-    this->addPixmap(QPixmap(":image/player"));
-    Painter->drawPixmap(QPointF(150,300),QPixmap(":image/player"));
+    this->addPixmap(QPixmap(":/assets/images/player/player_left.png"));
+    Painter->drawPixmap(QPointF(150,300),QPixmap(":/assets/images/player/player_left.png"));
 }

@@ -14,18 +14,22 @@ public:
     void setAmmo(int value);
     void animationAttack();
     void changeWeapon();
-    int lifetime_animation=1000;
-    bool attack =false;
     Weapon getWeapon();
     void setWeapon(Weapon &value);
-    QString getSens() const;
+    QString getSens()const;
     void setSens(const QString &value);
-    QString sens;
+    QString getPath();
+    QString getState() const;
+    void setState(const QString &value);
+    int lifetime_animation=1000;
+    bool attack =false;
+    Weapon *weapon;
 
 private :
     int life ;
     int ammo;
-    Weapon *weapon;
+    QString state;
+    QString sens;
 };
 
 #endif // PLAYER_H

@@ -1,14 +1,14 @@
-#include "player.h"
+#include "Player.h"
 #include "qdebug.h"
 
 Player::Player(QPointF * point):Graphic_element_alive(point){
-    setDrawing(new QPixmap(":image/player.png"));
+    setDrawing(new QPixmap(":/assets/images/player/player_left.png"));
     Weapon *excalibur = new Sword(10);
     setWeapon(*excalibur);
     this->life = 8;
+    this->ammo = 20;
     qDebug() << weapon->type();
 }
-
 
 int Player::getAmmo()
 {
@@ -40,12 +40,28 @@ void Player::setSens(const QString &value)
     sens = value;
 }
 
+QString Player::getPath()
+{
+    return ":/assets/images/player_" + type() + "/player_" + type() + "_" + getSens() + "_hand_" + getState() ;
+}
+
+QString Player::getState() const
+{
+    return state;
+}
+
+void Player::setState(const QString &value)
+{
+    state = value;
+}
+
 
 void Player::animationAttack()
 {
-    QString path = ":/image/player_" + weapon->type() + "_" + getSens() + "_hand_walk.png";
+    QString path = ":/assets/images/player_" + weapon->type() + "/player_" + weapon->type() + "_" + getSens() + "_hand_state1.png";
     setDrawing(new QPixmap (path));
 }
+
 
 void Player::changeWeapon()
 {

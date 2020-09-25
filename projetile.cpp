@@ -14,11 +14,11 @@ projetile::projetile(QPointF *point,QPointF *Souris,int dmg):Graphic_element(poi
     qreal P =(point->y()-Souris->y()) ;
     Position = new QVector2D(S,P);
     QVector2D unitaire = Position->normalized().operator*=(vitesse);
-
     XPos = unitaire.x();
     YPos =unitaire.y();
     angle = qRadiansToDegrees(qAtan2(P,S)) -90;
 }
+
 
 void projetile::setDrawing(QPixmap * draw)
 {

@@ -1,8 +1,6 @@
 #include "map.h"
 #include <QJsonDocument>
 #include <QJsonObject>
-
-#include <QJsonArray>
 #include <QFile>
 
 
@@ -10,7 +8,7 @@ QJsonArray Map::newMap(int numberOfMap) {
     if(numberOfMap == 1) {
         QString val;
         QFile file;
-        file.setFileName(":/data/map.json");
+        file.setFileName(":/assets/map_data/map.json");
         file.open(QIODevice::ReadOnly | QIODevice::Text);
         val = file.readAll();
         file.close();
@@ -20,5 +18,4 @@ QJsonArray Map::newMap(int numberOfMap) {
         QJsonArray item = value[0].toObject().value(QString("data")).toArray();
         return (item);
     }
-
 }
