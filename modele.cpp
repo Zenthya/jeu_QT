@@ -17,6 +17,7 @@ Modele::Modele()
     health = new Health(new QPointF( 50,100));
     number1 = new Number1(new QPointF( 85,105));
     number2= new Number2(new QPointF( 100,105));
+    chest = new  Chest(new QPointF(200, 400));
 
     // The monsters
    
@@ -44,6 +45,7 @@ Modele::Modele()
     Map_element.append(health);
     Map_element.append(number1);
     Map_element.append(number2);
+    Chest_element.append(chest);
 }
 
 void  Modele::Mapping(QString datafile)
@@ -116,6 +118,18 @@ void  Modele::Mapping(QString datafile)
     }
 }
 
+QList<Graphic_element *> Modele::getMap_element()
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    return Map_element;
+}
+
+void Modele::setMap_element( QList<Graphic_element *> &value)
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    Map_element = value;
+}
+
 
 QList<Graphic_element_alive *> Modele::getGame_element()
 {   QMutex  mutex ;
@@ -135,8 +149,6 @@ void Modele::RemoveGame_element(Graphic_element_alive * value)
         QMutexLocker locker(&mutex);
         Game_element.removeOne(value);
 }
-
-
 
 
 void Modele::RemoveProjectile_element(projetile * value)
@@ -168,7 +180,15 @@ void Modele::addProjectile(projetile * value)
     Projectile_element.append(value);
 }
 
-coffre::coffre(QPointF *point):Graphic_element(point)
-{
-    setDrawing(new QPixmap(":/chest.png"));
+QList<Graphic_element *> Modele::getChest_element()
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    return Chest_element;
 }
+
+void Modele::setChest_element( QList<Graphic_element *> &value)
+{   QMutex  mutex ;
+    QMutexLocker locker(&mutex);
+    Chest_element = value;
+}
+

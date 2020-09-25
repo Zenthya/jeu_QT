@@ -120,43 +120,50 @@ bool Conttrolleur::Controle_out_map(QPointF  position )
     return true ;
 }
 
-bool Conttrolleur::player_attack()
+bool Conttrolleur::player_attack_chest()
 {
-
-        QList<Graphic_element_alive *> tab = modele->getGame_element();
+        QList<Graphic_element *> tab = modele->getChest_element();
         tab.removeOne(modele->player);
-
     for(int i=0;i<tab.length();i++ ){
-        Graphic_element_alive * mob_element= tab[i];
+        Graphic_element * mob_element= tab[i];
         QRectF bounding_mob = QRectF(mob_element->getCoordonnee(),mob_element->getDrawing().size());
         QRectF player_sword;
-
         QPointF sens ;
         if(modele->player->getSens()==QString("left")){
             sens= QPointF(20,0);
         }else{
             sens= QPointF(10,0).operator-=(QPointF(modele->player->getDrawing().width(),0));
         }
-
-
-
-
             player_sword = QRectF(QPointF(modele->player->getCoordonnee()).operator-=( sens),QSize(modele->player->getDrawing().width()/4,modele->player->getDrawing().height()));
-
-
         if(bounding_mob.intersects(player_sword)){
+           modele->player->setAmmo(10);
+         return true ;
+    }
+    }return false;}
 
+
+bool Conttrolleur::player_attack()
+{
+        QList<Graphic_element_alive *> tab = modele->getGame_element();
+        tab.removeOne(modele->player);
+    for(int i=0;i<tab.length();i++ ){
+        Graphic_element_alive * mob_element= tab[i];
+        QRectF bounding_mob = QRectF(mob_element->getCoordonnee(),mob_element->getDrawing().size());
+        QRectF player_sword;
+        QPointF sens ;
+        if(modele->player->getSens()==QString("left")){
+            sens= QPointF(20,0);
+        }else{
+            sens= QPointF(10,0).operator-=(QPointF(modele->player->getDrawing().width(),0));
+        }
+            player_sword = QRectF(QPointF(modele->player->getCoordonnee()).operator-=( sens),QSize(modele->player->getDrawing().width()/4,modele->player->getDrawing().height()));
+        if(bounding_mob.intersects(player_sword)){
             mob_element->life -=modele->player->getWeapon().dmg;
-
             List_hurt.append(new hurt(mob_element,300));
-
-
-
          if(mob_element->life<0){
              modele->RemoveGame_element(mob_element);
          }
          return true ;
-
     }
     }return false;}
 
@@ -269,7 +276,7 @@ void Conttrolleur::run(){
 
         }
 
-        last_time=timer.elapsed();
+        
         animate_player_sword(modele->player->lifetime_animation,modele->player->attack);
 
         for(int i=0;i<Key.length();i++){

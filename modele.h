@@ -32,6 +32,7 @@ public:
     Health *health;
     Number1 *number1;
     Number2 *number2;
+    Chest *chest;
     Monster * Leballon;
     Sword Excalibur =Sword(8);
     void addProjectile(projetile  *);
@@ -45,17 +46,24 @@ public:
     QSoundEffect  * Death_player  ;
     QList<Graphic_element *> Map_element;
 
-
+    QList<Graphic_element *> getMap_element() ;
+    void setMap_element( QList<Graphic_element *> &value);
 
     QList<Graphic_element_alive *> getGame_element() ;
     void setGame_element( QList<Graphic_element_alive *> &value);
     void RemoveGame_element( Graphic_element_alive *);
+
+    QList<Graphic_element *> getChest_element();
+    void setChest_element(QList<Graphic_element *> &value);
+    void RemoveChest_element( Graphic_element *);
 
 private:
     void   Mapping(QString datafile);
     QList<Graphic_element_alive *> Game_element;
 
     QList<projetile  *> Projectile_element;
+
+    QList<Graphic_element *> Chest_element;
 
 };
 class hurt{

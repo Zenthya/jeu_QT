@@ -28,6 +28,7 @@ private :
     void Deplacementjoueur(QString * );
     bool Controle_out_map(QPointF );
     bool player_attack();
+    bool player_attack_chest();
 
     
    

@@ -56,4 +56,9 @@ void ModifiedScene::drawBackground(QPainter * Painter, const QRectF & )
     for(int i=0 ; i < modele->getProjectile_element().length();i++){
         Painter->drawPixmap(modele->getProjectile_element()[i]->getCoordonnee(),modele->getProjectile_element()[i]->getDrawing());
     }
+    for(int i=0 ; i <modele->getChest_element().length();i++){
+
+        Painter->drawPixmap(modele->getChest_element()[i]->getCoordonnee(),modele->getChest_element()[i]->getDrawing());
+
+    }
 }
