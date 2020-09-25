@@ -12,5 +12,7 @@ class Floore : public Graphic_element   {
     Floore(QPointF *);
     QString type() ;
     };
+
+
 #endif // WALL_H
 

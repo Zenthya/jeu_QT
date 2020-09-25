@@ -4,11 +4,13 @@
 #include<graphic_element.h>
 #include<QPixmap>
 
+
 class Background : public Graphic_element   {
-    public:
+public:
     QPixmap Drawing;
     Background(QPointF *, int typeOfBackground);
     QString type();
-    };
+};
+
 
 #endif // BACKGROUND_H

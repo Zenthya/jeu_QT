@@ -8,6 +8,7 @@
 #include<background.h>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <screen.h>
 
 #include <QJsonArray>
 #include <QFile>
@@ -27,6 +28,10 @@ public:
 
 
     Player  *player;
+    Screen *screen;
+    Health *health;
+    Number1 *number1;
+    Number2 *number2;
     Monster * Leballon;
     Sword Excalibur =Sword(8);
     void addProjectile(projetile  *);

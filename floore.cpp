@@ -4,7 +4,7 @@
 
 Floore::Floore(QPointF *point):Graphic_element(point)
 {
-    setDrawing(new QPixmap(":map/floore.png"));
+    setDrawing(new QPixmap(":/assets/images/map/floore.png"));
 }
 
 QString Floore::type(){
