@@ -9,15 +9,18 @@
 #include <QSoundEffect>
 #include <QRectF>
 #include <QtMath>
+#include <QElapsedTimer>
 
 Conttrolleur::Conttrolleur()
 {
+
 
 }
 void Conttrolleur::setModele(Modele * value)
 {
     modele=value;
     connect(this,&Conttrolleur::sound_death,modele->Death_player,&QSoundEffect::play);
+
 }
 
 Modele *Conttrolleur::getModele()
@@ -85,6 +88,8 @@ void Conttrolleur::ReveivceEvent(QEvent *event)
         }
     }
 }
+
+
 
 
 void Conttrolleur::Deplacementjoueur(QString *event)
@@ -233,17 +238,15 @@ void Conttrolleur::hurt_animation(Graphic_element_alive * element,int  *life_tim
 }
 
 void Conttrolleur::run(){
-
+     connect(this,&Conttrolleur::update,Afficheur,&Afficheur::update);
      bool monstre_touche =false;
-
+      qint64 pause ;
       int last_time=0;
       QElapsedTimer timer;
       timer.start();
 
     while(true){
-        Afficheur->scene()->update();
 
-        msleep(30);
 
 
         life_cadence+=1;
@@ -364,6 +367,20 @@ void Conttrolleur::run(){
             }
 
         }
+
+        qint64  time = timer.restart()-pause;
+
+        if(30-time>0){
+            pause= 30-time;
+
+            msleep(pause);
+
+        }else{
+
+           qDebug()<<"temps de calcul depassé";
+        }
+
+        emit update();
 
     }
 

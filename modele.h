@@ -37,7 +37,7 @@ public:
     Sword Excalibur =Sword(8);
     void addProjectile(projetile  *);
     QPixmap fireball =QPixmap(":/images/weapon/fire_ball.png");
-
+    QMutex mutex1;
     QList<projetile *> getProjectile_element();
 
 

@@ -42,6 +42,7 @@ private :
 
  signals :
      void sound_death();
+     void update();
 };
 
 

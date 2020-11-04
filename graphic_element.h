@@ -8,8 +8,8 @@ class Graphic_element
 public:
     Graphic_element(QPointF *);
     virtual ~Graphic_element();
-    QMutex mutex;
-    QPointF &  getCoordonnee() ;
+    mutable QMutex  mutex;
+    const QPointF &  getCoordonnee() const;
     void setCoordonnee( QPointF *value);
     QPixmap & getDrawing() ;
    virtual void setDrawing( QPixmap  *value);

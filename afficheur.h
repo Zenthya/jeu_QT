@@ -10,6 +10,11 @@ class Controlleur;
 
 class Afficheur: public QGraphicsView
 {
+
+    Q_OBJECT
+
+public slots :
+    void update();
 public:
     Afficheur(QWidget *parent = 0);
     void  setModele( Modele *);

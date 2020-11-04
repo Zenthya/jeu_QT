@@ -45,8 +45,7 @@ void ModifiedScene::keyPressEvent(QKeyEvent *event)
 void ModifiedScene::drawBackground(QPainter * Painter, const QRectF & )
 {
 
-    QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+
     for(int i=0 ; i <modele->Map_element.length();i++){
         Painter->drawPixmap(modele->Map_element[i]->getCoordonnee(),modele->Map_element[i]->getDrawing());
     }

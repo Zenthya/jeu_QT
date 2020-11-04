@@ -22,6 +22,11 @@ Modele* Afficheur::getModele(){
 
 
 
+void Afficheur::update()
+{
+    this->scene()->update();
+}
+
 
 
 

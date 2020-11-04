@@ -120,54 +120,54 @@ void  Modele::Mapping(QString datafile)
 }
 
 Player *Modele::getPlayer()
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     return player;
 }
 
 void Modele::setPlayer(Player *value)
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     player = value;
 }
 
 QList<Graphic_element *> Modele::getMap_element()
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     return Map_element;
 }
 
 void Modele::setMap_element( QList<Graphic_element *> &value)
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     Map_element = value;
 }
 
 
 QList<Graphic_element_alive *> Modele::getGame_element()
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     return Game_element;
 }
 
 void Modele::setGame_element( QList<Graphic_element_alive *> &value)
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     Game_element = value;
 }
 
 void Modele::RemoveGame_element(Graphic_element_alive * value)
 {
-    QMutex  mutex ;
-        QMutexLocker locker(&mutex);
+
+        QMutexLocker locker(&mutex1);
         Game_element.removeOne(value);
 }
 
 
 void Modele::RemoveProjectile_element(projetile * value)
 {
-    QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+
+    QMutexLocker locker(&mutex1);
     Projectile_element.removeOne(value);
 }
 
@@ -180,34 +180,34 @@ void Modele::play_sound()
 
 QList<projetile *> Modele::getProjectile_element()
 {
-    QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+
+    QMutexLocker locker(&mutex1);
     return Projectile_element;
 }
 
 
 void Modele::addProjectile(projetile * value)
 {
-    QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+
+    QMutexLocker locker(&mutex1);
     Projectile_element.append(value);
 }
 
 QList<Graphic_element *> Modele::getChest_element()
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     return Chest_element;
 }
 
 void Modele::setChest_element( QList<Graphic_element *> &value)
-{   QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+{
+    QMutexLocker locker(&mutex1);
     Chest_element = value;
 }
 
 void Modele::RemoveChest_element(Graphic_element* value)
 {
-    QMutex  mutex ;
-    QMutexLocker locker(&mutex);
+
+    QMutexLocker locker(&mutex1);
     Chest_element.removeOne(value);
 }

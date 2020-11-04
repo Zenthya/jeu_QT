@@ -12,7 +12,7 @@ Graphic_element::~Graphic_element()
     delete Coordonnee;
 }
 
-QPointF & Graphic_element::getCoordonnee()
+const QPointF & Graphic_element ::getCoordonnee() const
 {
     QMutexLocker locker(&mutex);
     return   * Coordonnee;
